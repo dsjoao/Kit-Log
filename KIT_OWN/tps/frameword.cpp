@@ -1,17 +1,5 @@
 #include "solucao.hpp" 
  
-Path construcao()
-{
-  
-   
-
-
-   
-}
-
-
-
-
 
 Path ILS(int maxIter, int maxIterIls) 
 {

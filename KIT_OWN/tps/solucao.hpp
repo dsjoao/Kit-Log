@@ -6,16 +6,16 @@
 
 #include <vector>
 #include <iostream>
-#include "Data.h"
+#include "Data2.hpp"
 
 struct Path
 {  
    std::vector<int> permutation;
-   double wTotal;
+   double wTotal{};
 };
 
 void show(Path *s);
 
-double getObjVal(Path *s, Data data);
+double getObjVal(Path *s, Data& data);
 
 #endif // solucao.
