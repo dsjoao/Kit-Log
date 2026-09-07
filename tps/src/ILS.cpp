@@ -1,12 +1,10 @@
 #include "ILS.hpp"
 
-
-Path TSP_ILS::ILS(int maxIter, int maxIterIls, Data *data)
+Path TSP_ILS::solve(int maxIter, int maxIterIls, Data *data)
 {
 
-   
-   Utils util{Utils{data}}; 
-   
+   Utils util{Utils{data}};
+   puts("DENTRO DA SOLUÇÃO \n");
    Path bestOfAll;
    bestOfAll.objVal = INFINITY;
     for (int i = 0; i < maxIter; i++) 
@@ -16,14 +14,14 @@ Path TSP_ILS::ILS(int maxIter, int maxIterIls, Data *data)
        int iterIls = 0;
        while (iterIls <= maxIterIls) 
       {
-          buscaLocal(&s);
+          util.buscaLocal(&s);
           if (s.objVal < best.objVal) 
          {
              best = s;
              iterIls = 0;
             
          }
-          s = perturbacao(best);
+          s = util.perturbacao(best);
           iterIls++;
          
       }

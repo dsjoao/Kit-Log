@@ -1,0 +1,3 @@
+C:/Users/joaop/OneDrive/testes_programacao/Testes_vscode_cpp/KIT/tps/build/CMakeFiles/tsp_run.dir
+C:/Users/joaop/OneDrive/testes_programacao/Testes_vscode_cpp/KIT/tps/build/CMakeFiles/edit_cache.dir
+C:/Users/joaop/OneDrive/testes_programacao/Testes_vscode_cpp/KIT/tps/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,11 @@
+# ninja log v6
+24	670	8104466628114372	CMakeFiles/tsp_run.dir/src/ILS_Utils_perturbacao.cpp.obj	3491d055d8568811
+683	806	8104394826291698	tsp_run.exe	33b25a03a5f3ec0a
+982	1122	8104466637695174	C:/Users/joaop/OneDrive/testes_programacao/Testes_vscode_cpp/KIT/tps/instances/tsp_run.exe	8defac6b6d67dcb5
+32	897	8104466628184384	CMakeFiles/tsp_run.dir/src/main.cpp.obj	abf287a8bd463bf7
+2	969	8104371845631522	CMakeFiles/tsp_run.dir/src/Data.cpp.obj	7d0fac73d21d30ae
+12	980	8104466627984346	CMakeFiles/tsp_run.dir/src/ILS_Utils_bestImprovement.cpp.obj	2c20b3c3b2914534
+18	830	8104466628044352	CMakeFiles/tsp_run.dir/src/ILS_Utils_construcao.cpp.obj	9934fa4c8d7a646a
+6	682	8104466627914332	CMakeFiles/tsp_run.dir/src/ILS.cpp.obj	4b3377895b59b5fc
+7	654	8104469180611845	CMakeFiles/tsp_run.dir/src/ILS_Utils_bestImprovement.cpp.obj	2c20b3c3b2914534
+658	794	8104469187133324	C:/Users/joaop/OneDrive/testes_programacao/Testes_vscode_cpp/KIT/tps/instances/tsp_run.exe	8defac6b6d67dcb5

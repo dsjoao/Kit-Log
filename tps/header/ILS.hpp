@@ -13,12 +13,12 @@ struct Path
 class TSP_ILS
 {
 
-   Path ILS(int maxIter, int maxIterIls, Data *data);
-
 public:
    TSP_ILS() {}
 
    ~TSP_ILS() {}
+
+   Path solve(int maxIter, int maxIterIls, Data *data);
 
    class Utils
    {
@@ -28,9 +28,6 @@ public:
 
       Utils(Data *data) { this->data = data; };
       ~Utils() {};
-
-      void getObjVal(Path &s);
-      void show(Path &s);
 
       struct insertionInfo
       {
@@ -49,9 +46,9 @@ public:
 
       void ordenarEmOrdemCrescente(std::vector<insertionInfo> &custoInsercao);
 
-      std::vector<insertionInfo> calcularCustoInsercao(Path &s, std::vector<int> &CL, Data *data);
+      std::vector<insertionInfo> calcularCustoInsercao(Path &s, std::vector<int> & CL, Data *data);
 
-      void inserirNaSolucao(Path &s, insertionInfo &inserted);
+      void inserirNaSolucao(Path &s, insertionInfo &inserted, std::vector<int>& CL);
 
       // -----------------------
 
@@ -59,9 +56,24 @@ public:
 
       // ---------- busca local -----------------------
 
-      
+      void buscaLocal(Path *s);
+
+      bool bestImprovementSwap(Path *s);
+
+      bool bestImprovement2Opt(Path *s);
+
+      bool bestImprovementOrOpt(Path *s, int count);
+   
+   
+      // -----------------------------------
+
+
+      // -------------- perturbação --------------
+
+      Path perturbacao(Path s);
+
    };
-  
+
 };
 
 #endif 
