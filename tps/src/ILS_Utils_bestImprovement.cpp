@@ -40,7 +40,7 @@ void TSP_ILS::Utils::buscaLocal(Path *s)
 
 bool TSP_ILS::Utils::bestImprovementSwap(Path *s) 
 {
-    puts("SWAP \n");
+    puts("SWAP\n");
     double **c = this->data->getMatrixCost(); 
     double bestDelta = 0;
     int best_i, best_j;
@@ -81,7 +81,7 @@ bool TSP_ILS::Utils::bestImprovementSwap(Path *s)
 
 bool TSP_ILS::Utils::bestImprovement2Opt(Path *s)
 {
-    puts("2OPT \n");
+    puts("2OPT\n");
     double **c = this->data->getMatrixCost();
     double bestDelta = 0;
     int best_i, best_j;
@@ -105,7 +105,7 @@ bool TSP_ILS::Utils::bestImprovement2Opt(Path *s)
     }
     if (bestDelta < 0)
     {
-        std::reverse(s->permutation.begin() + best_i, s->permutation.begin() + best_j);
+        std::reverse(s->permutation.begin() + best_i, s->permutation.begin() + best_j + 1);
 
         return true;
     }
@@ -114,12 +114,12 @@ bool TSP_ILS::Utils::bestImprovement2Opt(Path *s)
 
 bool TSP_ILS::Utils:: bestImprovementOrOpt(Path *s, int count)
 {
-    puts("ORPT \n");
+    printf("ORPT %d\n",count);
     double **c = this->data->getMatrixCost();
     double bestDelta = 0;
     int best_i, best_j;
     
-
+    
         for (int i = 1; i < s->permutation.size() - 1 - count; i++)
         {
             int vi_start = s->permutation[i];
@@ -127,7 +127,7 @@ bool TSP_ILS::Utils:: bestImprovementOrOpt(Path *s, int count)
             int vi_start_prev = s->permutation[i - 1];
             int vi_end_next = s->permutation[i + count];
 
-            for (int j = i + count - 1; j < s->permutation.size() - 1; j++)
+            for (int j = i + count + 1; j < s->permutation.size() - 1; j++)
             {
                 int vj = s->permutation[j];
                 int vj_next = s->permutation[j + 1];
@@ -150,11 +150,11 @@ bool TSP_ILS::Utils:: bestImprovementOrOpt(Path *s, int count)
             
             for (size_t i = 1; i < count; i++)
             {
-                s->permutation.insert(s->permutation.begin() + best_j + 1, s->permutation[best_i + i]);
+                s->permutation.insert(s->permutation.begin() + best_j, s->permutation[best_i + i]);
             }
 
             if(count != 1)
-                s->permutation.erase(s->permutation.begin() + best_i + 1, s->permutation.begin() + count - 1); 
+                s->permutation.erase(s->permutation.begin() + best_i + 1, s->permutation.begin() + best_i + count - 1); 
             
             return true;
         }
