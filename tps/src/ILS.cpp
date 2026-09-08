@@ -8,12 +8,18 @@ Path TSP_ILS::solve(int maxIter, int maxIterIls)
    bestOfAll.objVal = INFINITY;
     for (int i = 0; i < maxIter; i++) 
    {
-       Path s = Construcao(maxIter);
+       Path s = Construcao();
        Path best = s;
+
+       getObjVal(best); // calcula o custo do caminho
+
        int iterIls = 0;
        while (iterIls <= maxIterIls) 
       {
           buscaLocal(&s);
+
+          getObjVal(s);
+
           if (s.objVal < best.objVal) 
          {
              best = s;
@@ -21,6 +27,9 @@ Path TSP_ILS::solve(int maxIter, int maxIterIls)
             
          }
           s = perturbacao(best);
+
+          getObjVal(best);
+
           iterIls++;
          
       }
@@ -37,12 +46,13 @@ void TSP_ILS::getObjVal(Path &s)
     for (size_t i{}; i < s.permutation.size() - 1; ++i)
         s.objVal += data->getDistance(s.permutation[i], s.permutation[i + 1]);
 
-    std::cout << s.objVal << std::endl;
 }
 
 void TSP_ILS::show(Path &s)
 {
     for (size_t i{}; i < s.permutation.size() - 1; ++i)
         std::cout << s.permutation[i] << "->";
-    std::cout << s.permutation.back() << std::endl;
+    std::cout << s.permutation.back() << "\n";
+
+    std::cout << s.objVal << std::endl;
 }

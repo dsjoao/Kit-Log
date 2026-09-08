@@ -48,7 +48,7 @@ bool TSP_ILS::bestImprovementSwap(Path *s)
        int vi = s->permutation[i];
        int vi_next = s->permutation[i + 1];
        int vi_prev = s->permutation[i - 1];
-       for (int j = i + 2; j < s->permutation.size() - 1; j++) 
+       for (int j = i + 1; j < s->permutation.size() - 1; j++) 
       {
           int vj = s->permutation[j];
           int vj_next = s->permutation[j + 1];
@@ -58,8 +58,7 @@ bool TSP_ILS::bestImprovementSwap(Path *s)
 
           if (j == i + 1) // adjacentes sao um caso a parte pois a soma deles na forma padrão inflaria o delta para numeros negativos falsos
           {
-              delta = data->getDistance(vi_prev, vj) + data->getDistance(vi, vj_next) - data->getDistance(vi_prev, vi) - data->getDistance(vj, vj_next) 
-                    + data->getDistance(vi, vj) - data->getDistance(vj, vi);
+              delta = data->getDistance(vi_prev, vj) + data->getDistance(vi, vj_next) - data->getDistance(vi_prev, vi) - data->getDistance(vj, vj_next);
           }
           else
           {
@@ -93,15 +92,15 @@ bool TSP_ILS::bestImprovement2Opt(Path *s)
     puts("2OPT\n");
     double bestDelta = 0;
     int best_i, best_j;
-    for (int i = 0; i < s->permutation.size() - 2; i++)
+    for (int i = 1; i < s->permutation.size() - 2; i++)
     {
         int vi = s->permutation[i];
-        int vi_next = s->permutation[i + 1];
+        int vi_prev = s->permutation[i - 1];
         for (int j = i + 2; j < s->permutation.size() - 1; j++)
         {
             int vj = s->permutation[j];
             int vj_next = s->permutation[j + 1];
-            double delta = - data->getDistance(vi, vi_next) + data->getDistance(vj, vi_next) // compara a distancia de x com y + 1 e y com x - 1, pois a mudança é somente neles.
+            double delta = - data->getDistance(vi, vi_prev) + data->getDistance(vj, vi_prev) // compara a distancia de x com y + 1 e y com x - 1, pois a mudança é somente neles.
                            - data->getDistance(vj, vj_next) + data->getDistance(vi, vj_next);
 
             if (delta < bestDelta)
@@ -133,30 +132,27 @@ bool TSP_ILS:: bestImprovementOrOpt(Path *s, int count)
     double bestDelta = 0;
     int best_i, best_j;
     count--; // corrigir off by one
-    
 
-        for (int i = 1; i <=  - count - 2; i++)
+    for (int i = 1; i <= s->permutation.size() - count - 3; i++)
+    {
+        int vi_start = s->permutation[i];
+        int vi_end = s->permutation[i + count];
+        int vi_start_prev = s->permutation[i - 1];
+        int vi_end_next = s->permutation[i + count + 1];
+
+        for (int j = i + 1 + count; j < s->permutation.size() - count - 3; j++) // -2 pq o 1 no final n conta
         {
-            int vi_start = s->permutation[i];
-            int vi_end = s->permutation[i + count];
-            int vi_start_prev = s->permutation[i - 1];
-            int vi_end_next = s->permutation[i + count + 1];
-
-            for (int j = i + 1; j < s->permutation.size() - count - 3; j++) // -2 pq o 1 no final n conta
+            int vj = s->permutation[j];
+            int vj_next = s->permutation[j + 1];
+            int vj_prev = s->permutation[j - 1];
+            double delta = -data->getDistance(vi_start, vi_start_prev) - data->getDistance(vi_end, vi_end_next) - data->getDistance(vj, vj_next) + data->getDistance(vi_start, vj) + data->getDistance(vi_end, vj_next) + data->getDistance(vi_start_prev, vi_end_next);
+            if (delta < bestDelta)
             {
-                int vj = s->permutation[j];
-                int vj_next = s->permutation[j + 1];
-           
-                double delta = - data->getDistance(vi_start, vi_start_prev) - data->getDistance(vi_end, vi_end_next) - data->getDistance(vj, vj_next) 
-                               + data->getDistance(vi_start, vj) + data->getDistance(vi_end, vj_next) + data->getDistance(vi_start_prev, vi_end_next);
-                
-                               if (delta < bestDelta)
-                {
-                    bestDelta = delta;
-                    best_i = i;
-                    best_j = j;
-                }
+                bestDelta = delta;
+                best_i = i;
+                best_j = j;
             }
+        }
         }
         if (bestDelta < 0)
         {

@@ -5,11 +5,11 @@
 #include <ctime>
 #include <algorithm>
 
-Path TSP_ILS::Construcao(int ran)
+Path TSP_ILS::Construcao()
 {
    puts("CONSTRUCAO \n");
    Path s;
-   s.permutation = escolher3NosAleatorios(ran);
+   s.permutation = escolher3NosAleatorios();
    
    std::vector<int> CL = NosRestantes(s);
 
@@ -19,23 +19,22 @@ Path TSP_ILS::Construcao(int ran)
    {
       std::vector<insertionInfo> custoInsercao = calcularCustoInsercao(s, CL);
       ordenarEmOrdemCrescente(custoInsercao);
+      
       double alpha = (double)rand() / RAND_MAX;
       int selecionado = rand() % ((int)ceil(alpha * custoInsercao.size()));
+      
       inserirNaSolucao(s, custoInsercao[selecionado], CL);
    
    }
    return s;
 }
 
-std::vector<int> TSP_ILS::escolher3NosAleatorios(long long ran)
+std::vector<int> TSP_ILS::escolher3NosAleatorios()
 {
    puts("3 ALEATORIOS \n");
    int dim = data->getDimension();
 
-   srand(time(&ran));
-
-   generate:
-   int rand1 = rand() % (dim - 2 + 1) + 2; // pega aleatório em range 2 ate dim
+   generate : int rand1 = rand() % (dim - 2 + 1) + 2; // pega aleatório em range 2 ate dim
    int rand2 = rand() % (dim - 2 + 1) + 2;
    int rand3 = rand() % (dim - 2 + 1) + 2;
 
@@ -105,13 +104,7 @@ std::vector<TSP_ILS::insertionInfo> TSP_ILS::calcularCustoInsercao(Path& s, std:
 void TSP_ILS::inserirNaSolucao(Path& s, TSP_ILS::insertionInfo& inserted, std::vector<int>& CL)
 {
    puts("INSERIR NA SOL \n");
-   for(size_t i{}; i < s.permutation.size() - 1; ++i)
-   {
-      if(s.permutation[i] == inserted.arestaRemovida)
-      {
-         s.permutation.insert(s.permutation.begin() + i + 1, inserted.noInserido);
-         std::erase(CL,inserted.noInserido); 
-         break;
-      }   
-   }
+   s.permutation.insert(s.permutation.begin() + inserted.arestaRemovida + 1, inserted.noInserido);
+   std::erase(CL, inserted.noInserido);
+
 }

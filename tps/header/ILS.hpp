@@ -40,9 +40,9 @@ public:
 
       // ----------- construcao -----------
 
-      Path Construcao(int ran);
+      Path Construcao();
 
-      std::vector<int> escolher3NosAleatorios(long long ran);
+      std::vector<int> escolher3NosAleatorios();
 
       std::vector<int> NosRestantes(Path &s);
 
