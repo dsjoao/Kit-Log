@@ -5,16 +5,19 @@
 #include <ctime>
 #include <algorithm>
 
-Path TSP_ILS::Utils::Construcao()
+Path TSP_ILS::Construcao(int ran)
 {
    puts("CONSTRUCAO \n");
    Path s;
-   s.permutation = escolher3NosAleatorios(this->data);
-   std::vector<int> CL = NosRestantes(this->data, s);
+   s.permutation = escolher3NosAleatorios(ran);
+   
+   std::vector<int> CL = NosRestantes(s);
+
+   getObjVal(s);
 
    while (!CL.empty())
    {
-      std::vector<insertionInfo> custoInsercao = calcularCustoInsercao(s, CL, this->data);
+      std::vector<insertionInfo> custoInsercao = calcularCustoInsercao(s, CL);
       ordenarEmOrdemCrescente(custoInsercao);
       double alpha = (double)rand() / RAND_MAX;
       int selecionado = rand() % ((int)ceil(alpha * custoInsercao.size()));
@@ -24,25 +27,26 @@ Path TSP_ILS::Utils::Construcao()
    return s;
 }
 
-std::vector<int> TSP_ILS::Utils::escolher3NosAleatorios(Data *data)
+std::vector<int> TSP_ILS::escolher3NosAleatorios(long long ran)
 {
    puts("3 ALEATORIOS \n");
-   int dim {data->getDimension()};
+   int dim = data->getDimension();
 
-   srand(time(0));
+   srand(time(&ran));
 
    generate:
-   int rand1 = rand() % dim;
-   int rand2 = rand() % dim;
-   int rand3 = rand() % dim;
+   int rand1 = rand() % (dim - 2 + 1) + 2; // pega aleatório em range 2 ate dim
+   int rand2 = rand() % (dim - 2 + 1) + 2;
+   int rand3 = rand() % (dim - 2 + 1) + 2;
 
-   if ((rand1 == rand2) || (rand1 == rand3) || (rand2 == rand3)) goto generate;
+   if ((rand1 == rand2) || (rand1 == rand3) || (rand2 == rand3)) goto generate; // gotos não boa prática mas as vezes dá pra usar
 
    return {1,rand1,rand2,rand3,1};
 
+   
 }
 
-std::vector<int> TSP_ILS::Utils::NosRestantes(Data *data, Path &s)
+std::vector<int> TSP_ILS::NosRestantes(Path &s)
 {
    puts("NOSRESANTES \n");
    int dim = data->getDimension();
@@ -50,17 +54,17 @@ std::vector<int> TSP_ILS::Utils::NosRestantes(Data *data, Path &s)
    std::vector<int> restantes(dim);
 
    for (int i = 0; i < dim; ++i)
-      restantes[i] = i;
-   
-      for(int i : s.permutation)
-   {
-      restantes.erase(std::remove(restantes.begin(), restantes.end(), i), restantes.end());
-   }
+      restantes[i] = i + 1;
 
+   for (int i : s.permutation)
+      std::erase(restantes, i);
+      
+
+   
    return restantes;
 }
 
-void TSP_ILS::Utils::ordenarEmOrdemCrescente(std::vector<insertionInfo> &custoInsercao)
+void TSP_ILS::ordenarEmOrdemCrescente(std::vector<insertionInfo> &custoInsercao)
 {
    puts("SORT \n");
    std::sort(custoInsercao.begin(), custoInsercao.end(), [](const insertionInfo &a, const insertionInfo &b)
@@ -69,37 +73,36 @@ void TSP_ILS::Utils::ordenarEmOrdemCrescente(std::vector<insertionInfo> &custoIn
 
 }
 
-std::vector<TSP_ILS::Utils::insertionInfo> TSP_ILS::Utils::calcularCustoInsercao(Path& s, std::vector<int>& CL, Data *data)
+std::vector<TSP_ILS::insertionInfo> TSP_ILS::calcularCustoInsercao(Path& s, std::vector<int>& CL)
 {
    puts("CALCULAR CUSTO INSERCAO \n");
-   double **c = data->getMatrixCost();
+   
 
    std::vector<insertionInfo>custoInsercao = std::vector<insertionInfo>((s.permutation.size() - 1) * CL.size());
+
    
    int l = 0;
-   for (int a{}; a + 1 < s.permutation.size() ; ++a)
+   for (int a = 0; a < s.permutation.size() - 1 ; a++)
    {
-      
+    
        int i = s.permutation[a];
        int j = s.permutation[a + 1];
        for (auto k : CL)
       {
-         
-         printf("%d  %d  %d  %d \n" , a, i , j, k);
-          custoInsercao[l].custo = c[i][k] + c[j][k] - c[i][j];
-          custoInsercao[l].noInserido = k;
-          custoInsercao[l].arestaRemovida = a;
-          l++;
+         custoInsercao[l].custo = data->getDistance(i, k) + data->getDistance(j, k) - data->getDistance(i,j);
+         custoInsercao[l].noInserido = k;
+         custoInsercao[l].arestaRemovida = a;
+         l++;
          
       }
-      puts("opa");
+      
    }
    puts("terminou o calculo \n");
    return custoInsercao;
    
 }
 
-void TSP_ILS::Utils::inserirNaSolucao(Path& s, TSP_ILS::Utils::insertionInfo& inserted, std::vector<int>& CL)
+void TSP_ILS::inserirNaSolucao(Path& s, TSP_ILS::insertionInfo& inserted, std::vector<int>& CL)
 {
    puts("INSERIR NA SOL \n");
    for(size_t i{}; i < s.permutation.size() - 1; ++i)

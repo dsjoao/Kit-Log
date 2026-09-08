@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 
-void TSP_ILS::Utils::buscaLocal(Path *s)
+void TSP_ILS::buscaLocal(Path *s)
 {
     puts("BUSCAR LOCAL \n");
     std::vector<int> NL = {1, 2, 3, 4, 5};
@@ -38,10 +38,9 @@ void TSP_ILS::Utils::buscaLocal(Path *s)
    
 } 
 
-bool TSP_ILS::Utils::bestImprovementSwap(Path *s) 
+bool TSP_ILS::bestImprovementSwap(Path *s) 
 {
     puts("SWAP\n");
-    double **c = this->data->getMatrixCost(); 
     double bestDelta = 0;
     int best_i, best_j;
     for (int i = 1; i < s->permutation.size() - 1; i++) 
@@ -49,21 +48,31 @@ bool TSP_ILS::Utils::bestImprovementSwap(Path *s)
        int vi = s->permutation[i];
        int vi_next = s->permutation[i + 1];
        int vi_prev = s->permutation[i - 1];
-       for (int j = i + 1; j < s->permutation.size() - 1; j++) 
+       for (int j = i + 2; j < s->permutation.size() - 1; j++) 
       {
           int vj = s->permutation[j];
           int vj_next = s->permutation[j + 1];
           int vj_prev = s->permutation[j - 1];
-          double delta = -c[vi_prev][vi] - c[vi][vi_next] + c[vi_prev][vj]  
-                         +c[vj][vi_next] - c[vj_prev][vj] - c[vj][vj_next] 
-                         +c[vj_prev][vi] + c[vi][vj_next];
-          if (delta < bestDelta) 
-         {
-             bestDelta = delta;
-             best_i = i;
-             best_j = j;
-            
-         }
+
+          double delta;
+
+          if (j == i + 1) // adjacentes sao um caso a parte pois a soma deles na forma padrão inflaria o delta para numeros negativos falsos
+          {
+              delta = data->getDistance(vi_prev, vj) + data->getDistance(vi, vj_next) - data->getDistance(vi_prev, vi) - data->getDistance(vj, vj_next) 
+                    + data->getDistance(vi, vj) - data->getDistance(vj, vi);
+          }
+          else
+          {
+              delta = - data->getDistance(vi_prev, vi) - data->getDistance(vi, vi_next) + data->getDistance(vi_prev, vj) // distancias do ponto x pra x - 1 e x + 1 (na sequencia) comparadas antes de dps da troca
+                         + data->getDistance(vj, vi_next) - data->getDistance(vj_prev, vj) - data->getDistance(vj, vj_next) 
+                         + data->getDistance(vj_prev, vi) + data->getDistance(vi, vj_next);
+          }
+          if (delta < bestDelta)
+          {
+              bestDelta = delta;
+              best_i = i;
+              best_j = j;
+          }
          
       }
       
@@ -79,22 +88,22 @@ bool TSP_ILS::Utils::bestImprovementSwap(Path *s)
    
 }
 
-bool TSP_ILS::Utils::bestImprovement2Opt(Path *s)
+bool TSP_ILS::bestImprovement2Opt(Path *s)
 {
     puts("2OPT\n");
-    double **c = this->data->getMatrixCost();
     double bestDelta = 0;
     int best_i, best_j;
-    for (int i = 1; i < s->permutation.size() - 1; i++)
+    for (int i = 0; i < s->permutation.size() - 2; i++)
     {
         int vi = s->permutation[i];
-        int vi_prev = s->permutation[i - 1];
+        int vi_next = s->permutation[i + 1];
         for (int j = i + 2; j < s->permutation.size() - 1; j++)
         {
             int vj = s->permutation[j];
             int vj_next = s->permutation[j + 1];
-            double delta = -c[vi][vi_prev] + c[vj][vi_prev] -c[vj][vj_next] + c[vi][vj_next];
-            
+            double delta = - data->getDistance(vi, vi_next) + data->getDistance(vj, vi_next) // compara a distancia de x com y + 1 e y com x - 1, pois a mudança é somente neles.
+                           - data->getDistance(vj, vj_next) + data->getDistance(vi, vj_next);
+
             if (delta < bestDelta)
             {
                 bestDelta = delta;
@@ -105,6 +114,12 @@ bool TSP_ILS::Utils::bestImprovement2Opt(Path *s)
     }
     if (bestDelta < 0)
     {
+
+        if(best_i >= best_j)
+        {
+            std::swap(best_i,best_j);
+        }
+
         std::reverse(s->permutation.begin() + best_i, s->permutation.begin() + best_j + 1);
 
         return true;
@@ -112,31 +127,30 @@ bool TSP_ILS::Utils::bestImprovement2Opt(Path *s)
     return false;
 }
 
-bool TSP_ILS::Utils:: bestImprovementOrOpt(Path *s, int count)
+bool TSP_ILS:: bestImprovementOrOpt(Path *s, int count)
 {
     printf("ORPT %d\n",count);
-    double **c = this->data->getMatrixCost();
     double bestDelta = 0;
     int best_i, best_j;
+    count--; // corrigir off by one
     
-    
-        for (int i = 1; i < s->permutation.size() - 1 - count; i++)
+
+        for (int i = 1; i <=  - count - 2; i++)
         {
             int vi_start = s->permutation[i];
-            int vi_end = s->permutation[i + (count - 1)];
+            int vi_end = s->permutation[i + count];
             int vi_start_prev = s->permutation[i - 1];
-            int vi_end_next = s->permutation[i + count];
+            int vi_end_next = s->permutation[i + count + 1];
 
-            for (int j = i + count + 1; j < s->permutation.size() - 1; j++)
+            for (int j = i + 1; j < s->permutation.size() - count - 3; j++) // -2 pq o 1 no final n conta
             {
                 int vj = s->permutation[j];
                 int vj_next = s->permutation[j + 1];
-                int vj_prev = s->permutation[j - 1];
-            
-
-                double delta = -c[vi_start][vi_start_prev] -c[vi_end][vi_end_next] -c[vj][vj_next]
-                               +c[vi_start][vj] +c[vi_end][vj_next] +c[vi_start_prev][vi_end_next];
-                if (delta < bestDelta)
+           
+                double delta = - data->getDistance(vi_start, vi_start_prev) - data->getDistance(vi_end, vi_end_next) - data->getDistance(vj, vj_next) 
+                               + data->getDistance(vi_start, vj) + data->getDistance(vi_end, vj_next) + data->getDistance(vi_start_prev, vi_end_next);
+                
+                               if (delta < bestDelta)
                 {
                     bestDelta = delta;
                     best_i = i;
@@ -146,16 +160,18 @@ bool TSP_ILS::Utils:: bestImprovementOrOpt(Path *s, int count)
         }
         if (bestDelta < 0)
         {
-            std::swap(s->permutation[best_i], s->permutation[best_j]);
-            
-            for (size_t i = 1; i < count; i++)
+                // "gira" a sequencia ate o termo escolhio (do meio) seja o primeiro do range especificado (esquerda ate direita)
+                // EX.: 1 2 3 4 5 6 7 8 de 3 ate 7 faça com que 6 seja o primeiro, ele retorna 1 2 6 7 3 4 5 8
+
+            if (best_j > best_i + count)
             {
-                s->permutation.insert(s->permutation.begin() + best_j, s->permutation[best_i + i]);
+                std::rotate(s->permutation.begin() + best_i, s->permutation.begin() + best_i + count + 1, s->permutation.begin() + best_j + 1);
+            }
+            else if (best_j < best_i)
+            {
+                std::rotate(s->permutation.begin() + best_j, s->permutation.begin() + best_i, s->permutation.begin() + best_i + count + 1);
             }
 
-            if(count != 1)
-                s->permutation.erase(s->permutation.begin() + best_i + 1, s->permutation.begin() + best_i + count - 1); 
-            
             return true;
         }
         return false;

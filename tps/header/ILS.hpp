@@ -6,47 +6,49 @@
 
 struct Path
 {
-   std::vector<int> permutation{};
-   double objVal{};
+   std::vector<int> permutation;
+   double objVal;
 };
 
 class TSP_ILS
 {
 
 public:
-   TSP_ILS() {}
+   TSP_ILS(Data *data) 
+   {
+      this->data = data;
+      this->c = this->data->getMatrixCost();
+   }
 
    ~TSP_ILS() {}
 
-   Path solve(int maxIter, int maxIterIls, Data *data);
+   Path solve(int maxIter, int maxIterIls);
 
-   class Utils
+   void getObjVal(Path &s);
+
+   void show(Path &s);
+
+   Data *data;
+   double **c;
+
+   struct insertionInfo
    {
-
-      public:
-      Data *data;
-
-      Utils(Data *data) { this->data = data; };
-      ~Utils() {};
-
-      struct insertionInfo
-      {
-         int noInserido;
-         int arestaRemovida;
-         double custo;
-      };
+      int noInserido;
+      int arestaRemovida;
+      double custo;
+   };
 
       // ----------- construcao -----------
 
-      Path Construcao();
+      Path Construcao(int ran);
 
-      std::vector<int> escolher3NosAleatorios(Data *data);
+      std::vector<int> escolher3NosAleatorios(long long ran);
 
-      std::vector<int> NosRestantes(Data *data, Path &s);
+      std::vector<int> NosRestantes(Path &s);
 
       void ordenarEmOrdemCrescente(std::vector<insertionInfo> &custoInsercao);
 
-      std::vector<insertionInfo> calcularCustoInsercao(Path &s, std::vector<int> & CL, Data *data);
+      std::vector<insertionInfo> calcularCustoInsercao(Path &s, std::vector<int>& CL);
 
       void inserirNaSolucao(Path &s, insertionInfo &inserted, std::vector<int>& CL);
 
@@ -70,10 +72,9 @@ public:
 
       // -------------- perturbação --------------
 
-      Path perturbacao(Path s);
+      Path perturbacao(Path& s);
 
+      void swapRanges(Path &s, int begin1, int end1, int begin2, int end2);
    };
-
-};
 
 #endif 
