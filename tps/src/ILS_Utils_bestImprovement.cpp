@@ -5,7 +5,7 @@
 
 void TSP_ILS::buscaLocal(Path *s)
 {
-    puts("BUSCAR LOCAL \n");
+    
     std::vector<int> NL = {1, 2, 3, 4, 5};
     bool improved = false;
    
@@ -40,7 +40,7 @@ void TSP_ILS::buscaLocal(Path *s)
 
 bool TSP_ILS::bestImprovementSwap(Path *s) 
 {
-    puts("SWAP\n");
+    
     double bestDelta = 0;
     int best_i, best_j;
     for (int i = 1; i < s->permutation.size() - 1; i++) 
@@ -87,9 +87,10 @@ bool TSP_ILS::bestImprovementSwap(Path *s)
    
 }
 
+// compara o custo original com o bloco invertido, ou seja, começo novo e final novo pois o resto do bloco todo permanece o msm
 bool TSP_ILS::bestImprovement2Opt(Path *s)
 {
-    puts("2OPT\n");
+    
     double bestDelta = 0;
     int best_i, best_j;
     for (int i = 1; i < s->permutation.size() - 2; i++)
@@ -126,9 +127,10 @@ bool TSP_ILS::bestImprovement2Opt(Path *s)
     return false;
 }
 
+// compara os custos do caminho original do caminho com os pontos finais e iniciais do bloco 
 bool TSP_ILS:: bestImprovementOrOpt(Path *s, int count)
 {
-    printf("ORPT %d\n",count);
+    
     double bestDelta = 0;
     int best_i, best_j;
     count--; // corrigir off by one
@@ -157,7 +159,7 @@ bool TSP_ILS:: bestImprovementOrOpt(Path *s, int count)
         if (bestDelta < 0)
         {
                 // "gira" a sequencia ate o termo escolhio (do meio) seja o primeiro do range especificado (esquerda ate direita)
-                // EX.: 1 2 3 4 5 6 7 8 de 3 ate 7 faça com que 6 seja o primeiro, ele retorna 1 2 6 7 3 4 5 8
+                // EX.: 1 2 3 4 5 6 7 8 de 3 ate 7 com que 6 seja o primeiro, ele retorna 1 2 6 7 3 4 5 8
 
             if (best_j > best_i + count)
             {

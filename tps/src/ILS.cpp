@@ -3,7 +3,7 @@
 Path TSP_ILS::solve(int maxIter, int maxIterIls)
 {
 
-   puts("DENTRO DA SOLUCAO \n");
+   
    Path bestOfAll;
    bestOfAll.objVal = INFINITY;
     for (int i = 0; i < maxIter; i++) 
@@ -52,7 +52,7 @@ void TSP_ILS::show(Path &s)
 {
     for (size_t i{}; i < s.permutation.size() - 1; ++i)
         std::cout << s.permutation[i] << "->";
-    std::cout << s.permutation.back() << "\n";
+    std::cout << s.permutation.back() << "\ncusto: ";
 
     std::cout << s.objVal << std::endl;
 }

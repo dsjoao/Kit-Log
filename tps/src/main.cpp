@@ -2,15 +2,13 @@
 #include "Data.h"
 #include <iostream>
 
+// codigo pode ser bem refatorado em algumas partes
 
 int main(int argc, char** argv) {
    
-   puts("INICIANDO \n");
    Data data = Data(argc, argv[1]);
-
    data.read();
-   puts("DADOS LIDOS \n");
-
+      
    TSP_ILS ils(&data);
 
    srand(time(0)); // gera aleatoriedade
@@ -18,14 +16,13 @@ int main(int argc, char** argv) {
    int dim = data.getDimension();
 
    int MaxIterILS = (dim >= 150 ? dim / 2 : dim);
-
    int MaxIter = 50;
 
 
-   puts("INICIANDO RESOLUCAO \n");
+   
    Path opt = ils.solve(MaxIter, MaxIterILS);
 
-   std::cout << "Soulucao encontrada: \n";
+   std::cout << "Soulucao encontrada:\n";
    ils.show(opt);
    
 
