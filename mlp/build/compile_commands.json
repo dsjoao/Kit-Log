@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/mlp/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/mlp/header -std=gnu++20 -o CMakeFiles/mlp_run.dir/scr/main.cpp.o -c /home/dsjoao/Projects/Kit-Log/mlp/scr/main.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/mlp/scr/main.cpp",
+  "output": "CMakeFiles/mlp_run.dir/scr/main.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/mlp/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/mlp/header -std=gnu++20 -o CMakeFiles/mlp_run.dir/scr/Data.cpp.o -c /home/dsjoao/Projects/Kit-Log/mlp/scr/Data.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/mlp/scr/Data.cpp",
+  "output": "CMakeFiles/mlp_run.dir/scr/Data.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/mlp/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/mlp/header -std=gnu++20 -o CMakeFiles/mlp_run.dir/scr/MLP.cpp.o -c /home/dsjoao/Projects/Kit-Log/mlp/scr/MLP.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/mlp/scr/MLP.cpp",
+  "output": "CMakeFiles/mlp_run.dir/scr/MLP.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/mlp/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/mlp/header -std=gnu++20 -o CMakeFiles/mlp_run.dir/scr/MLP_Utils_bestImprovement.cpp.o -c /home/dsjoao/Projects/Kit-Log/mlp/scr/MLP_Utils_bestImprovement.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/mlp/scr/MLP_Utils_bestImprovement.cpp",
+  "output": "CMakeFiles/mlp_run.dir/scr/MLP_Utils_bestImprovement.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/mlp/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/mlp/header -std=gnu++20 -o CMakeFiles/mlp_run.dir/scr/MLP_Utils_construcao.cpp.o -c /home/dsjoao/Projects/Kit-Log/mlp/scr/MLP_Utils_construcao.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/mlp/scr/MLP_Utils_construcao.cpp",
+  "output": "CMakeFiles/mlp_run.dir/scr/MLP_Utils_construcao.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/mlp/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/mlp/header -std=gnu++20 -o CMakeFiles/mlp_run.dir/scr/MLP_Utils_perturbacao.cpp.o -c /home/dsjoao/Projects/Kit-Log/mlp/scr/MLP_Utils_perturbacao.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/mlp/scr/MLP_Utils_perturbacao.cpp",
+  "output": "CMakeFiles/mlp_run.dir/scr/MLP_Utils_perturbacao.cpp.o"
+}
+]
