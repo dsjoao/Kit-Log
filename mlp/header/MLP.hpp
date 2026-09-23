@@ -10,6 +10,13 @@ struct Path
    double lat;
 };
 
+struct subSeq
+{
+  double t, c;
+  int w;
+  int first, last;
+};
+
 class MLP
 {
 
@@ -17,7 +24,6 @@ public:
    MLP(Data *data)
    {
       this->data = data;
-      this->c = this->data->getMatrixCost();
    }
 
    ~MLP() {}
@@ -28,8 +34,12 @@ public:
 
    void show(Path &s);
 
+   inline subSeq concatenate(subSeq& sigma_1, subSeq& sigma_2);
+
+   void updateAllSubSeq(Path *s);
+
    Data *data;
-   double **c;
+   std::vector<std::vector<subSeq>>subSeq_matrix;
 
    struct insertionInfo
    {
