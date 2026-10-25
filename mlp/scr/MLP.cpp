@@ -28,7 +28,7 @@ Path MLP::solve(int maxIter, int maxIterIls)
          }
           s = perturbacao(best);
 
-          getLat(best);
+          getLat(s);
 
           iterIls++;
 
@@ -45,12 +45,8 @@ void MLP::getLat(Path &s)
 
     s.lat = 0;
 
-    for (int i = 0; i < s.permutation.size() ; i++)
-        for (size_t j = 1; j < i ; j++)
-        {
-            if(j == 1) break;
-            s.lat += data->getDistance(s.permutation[j], s.permutation[j + 1]);
-        }
+    for (int i = 1; i < s.permutation.size() - 1; i++)
+        s.lat += s.lat + data->getDistance(s.permutation[i], s.permutation[i + 1])
 
 }
 
