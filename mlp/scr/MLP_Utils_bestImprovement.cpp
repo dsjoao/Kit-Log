@@ -1,11 +1,13 @@
 #include "Data.h"
 #include "MLP.hpp"
-#include <cmath>
+#include <cstdio>
 #include <vector>
 #include <algorithm>
 
 void MLP::buscaLocal(Path *s)
 {
+
+
 
     std::vector<int> NL = {1, 2, 3, 4, 5};
     bool improved = false;
@@ -46,21 +48,29 @@ bool MLP::bestImprovementSwap(Path *s)
     int best_i, best_j;
     for (int i = 1; i < s->permutation.size() - 1; i++)
    {
-       Subseq sigma1 = subseq_matrix[0][i - 1];
-
-       for (size_t j = i + 1; j < s->permutation.size(); j++)
+       for (size_t j = i + 1; j < s->permutation.size() - 1; j++)
        {
-           Subseq sigma2 = subseq_matrix[j][j];
-           Subseq sigma3 = subseq_matrix[i + 1][j];
-           Subseq sigma4 = subseq_matrix[j][this->data->getDimension() - 1];
 
-           Subseq sigma_t1 = Subseq::concatenate(sigma1, sigma2,data);
-           Subseq sigma_t2 = Subseq::concatenate(sigma_t1, sigma3,data);
-           Subseq sigma_t3 = Subseq::concatenate(sigma_t2, sigma4,data);
+           Subseq sigma1,sigma2,sigma3;
 
-           if (sigma_t3.C < bestDelta)
+
+           if (j == i + 1)
            {
-               bestDelta = sigma_t3.C;
+            sigma1 = Subseq::concatenate(subseq_matrix[0][i - 1], subseq_matrix[j][j], data);
+            sigma2 = Subseq::concatenate(sigma1, subseq_matrix[i][i], data);
+            sigma3 = Subseq::concatenate(sigma2, subseq_matrix[j + 1][s->permutation.size() - 1], data);
+           }
+           else
+           {
+            sigma1 = Subseq::concatenate(subseq_matrix[0][i - 1],subseq_matrix[i][i], data);
+            sigma2 = Subseq::concatenate(sigma1, subseq_matrix[i + 1][j - 1], data);
+            sigma3 = Subseq::concatenate(sigma2, subseq_matrix[j + 1][s->permutation.size() - 1],data);
+           }
+
+
+           if (sigma3.C < bestDelta)
+           {
+               bestDelta = sigma3.C;
                best_i = i;
                best_j = j;
            }
@@ -71,6 +81,9 @@ bool MLP::bestImprovementSwap(Path *s)
     if (bestDelta < s->lat)
     {
        std::swap(s->permutation[best_i], s->permutation[best_j]);
+
+
+       updateAllSubseq(s);
 
        return true;
 
@@ -83,21 +96,22 @@ bool MLP::bestImprovementSwap(Path *s)
 bool MLP::bestImprovement2Opt(Path *s)
 {
 
+
+
+
     double bestDelta = s->lat;
     int best_i, best_j;
-    for (int i = 1; i < s->permutation.size() - 2; i++)
+    for (int i = 1; i < s->permutation.size() - 1; i++)
     {
-        Subseq sigma1 = subseq_matrix[0][i - 1];
-
-        for (size_t j = i + 1 ; j < s->permutation.size(); j++)
+        for (size_t j = i + 1 ; j < s->permutation.size() - 1; j++)
         {
-            Subseq sigma2 = subseq_matrix[j][i];
-            Subseq sigma3 = Subseq::concatenate(sigma1, sigma2, this->data);
-            Subseq sigma_t = Subseq::concatenate(sigma3, subseq_matrix[j + 1][this->data->getDimension() - 1], this->data);
 
-            if (sigma_t.C < bestDelta)
+            Subseq sigma1 = Subseq::concatenate(subseq_matrix[0][i-1],subseq_matrix[j][i], data);
+            Subseq sigma2 = Subseq::concatenate(sigma1, subseq_matrix[j+1][s->permutation.size() - 1], data);
+
+            if (sigma2.C < bestDelta)
             {
-                bestDelta = sigma_t.C;
+                bestDelta = sigma2.C;
                 best_i = i;
                 best_j = j;
             }
@@ -114,6 +128,8 @@ bool MLP::bestImprovement2Opt(Path *s)
 
         std::reverse(s->permutation.begin() + best_i, s->permutation.begin() + best_j + 1);
 
+        updateAllSubseq(s);
+
         return true;
     }
     return false;
@@ -123,20 +139,31 @@ bool MLP::bestImprovement2Opt(Path *s)
 bool MLP:: bestImprovementOrOpt(Path *s, int count)
 {
 
+
+
+
+
     double bestDelta = s->lat;
     int best_i, best_j;
     count--; // corrigir off by one
 
-    for (int i = 1; i <= s->permutation.size() - count - 1; i++)
-    {
-       Subseq sigma1 = subseq_matrix[0][i + count - 1];
-
-       for (size_t j = i + 1; j < s->permutation.size(); j++)
+    for (int i = 1; i < s->permutation.size() - count - 2; i++)
+       for (size_t j = i + count + 1; j < s->permutation.size() - 1; j++)
        {
 
+           Subseq sigma1 = Subseq::concatenate(subseq_matrix[0][i-1],subseq_matrix[i + count + 1][j], data);
+           Subseq sigma2 = Subseq::concatenate(sigma1, subseq_matrix[i][i + count], data);
+           Subseq sigma3 = Subseq::concatenate(sigma2, subseq_matrix[j + 1][s->permutation.size() - 1], data);
+
+               if (sigma3.C < bestDelta)
+               {
+                   bestDelta = sigma3.C;
+                   best_i = i;
+                   best_j = j;
+               }
+
        }
-    }
-        if (bestDelta < 0)
+        if (bestDelta < s->lat)
         {
                 // "gira" a sequencia ate o termo escolhio (do meio) seja o primeiro do range especificado (esquerda ate direita)
                 // EX.: 1 2 3 4 5 6 7 8 de 3 ate 7 com que 6 seja o primeiro, ele retorna 1 2 6 7 3 4 5 8
@@ -150,8 +177,11 @@ bool MLP:: bestImprovementOrOpt(Path *s, int count)
                 std::rotate(s->permutation.begin() + best_j, s->permutation.begin() + best_i, s->permutation.begin() + best_i + count + 1);
             }
 
+
+            updateAllSubseq(s);
+
             return true;
         }
-        return false;
 
+    return false;
 }

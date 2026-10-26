@@ -9,26 +9,33 @@
 Path MLP::Construcao()
 {
 
-   int alfa = rand() % this->data->getDimension();
-
    Path s;
-   s.permutation = {1,1};
+   s.permutation = {1};
 
    std::vector<int> CL = NosRestantes(s);
 
-   getLat(s);
+
+   int r = 1;
 
    while (!CL.empty())
    {
-      std::vector<insertionInfo> custoInsercao = calcularCustoInsercao(s, CL);
-      ordenarEmOrdemCrescente(custoInsercao);
 
-      double alpha = (double)rand() / RAND_MAX;
-      int selecionado = rand() % ((int)ceil(alpha * custoInsercao.size()));
+      ordenarEmOrdemCrescente(CL, r);
 
-      inserirNaSolucao(s, custoInsercao[selecionado], CL);
+
+      double alfa = ((rand() % this->data->getDimension()) / 100);
+      int selecionado =  CL[rand() % (std::max(1, (int)std::ceil(alfa * CL.size())))];
+
+      s.permutation.push_back(selecionado);
+
+      std::erase(CL, selecionado);
+
+      r = selecionado;
 
    }
+
+   s.permutation.push_back(1);
+
    return s;
 }
 
@@ -38,56 +45,19 @@ std::vector<int> MLP::NosRestantes(Path &s)
 
    int dim = data->getDimension();
 
-   std::vector<int> restantes(dim);
+   std::vector<int> restantes;
 
-   for (int i = 0; i < dim; ++i)
-      restantes[i] = (i + 1) + 1;
+   for (int i = 2; i <= dim; ++i)
+      restantes.push_back(i);
 
    return restantes;
 }
 
-void MLP::ordenarEmOrdemCrescente(std::vector<insertionInfo> &custoInsercao)
-{
-
-   std::sort(custoInsercao.begin(), custoInsercao.end(), [](const insertionInfo &a, const insertionInfo &b)
-             { return a.custo < b.custo; });
-
-
-}
-
-std::vector<MLP::insertionInfo> MLP::calcularCustoInsercao(Path& s, std::vector<int>& CL)
+void MLP::ordenarEmOrdemCrescente(std::vector<int> &custo, int r)
 {
 
 
-
-   std::vector<insertionInfo>custoInsercao = std::vector<insertionInfo>((s.permutation.size() - 1) * CL.size());
-
-
-   int l = 0;
-   for (int a = 0; a < s.permutation.size() - 1 ; a++)
-   {
-
-       int i = s.permutation[a];
-       int j = s.permutation[a + 1];
-       for (auto k : CL)
-      {
-         custoInsercao[l].custo = data->getDistance(i, k) + data->getDistance(j, k) - data->getDistance(i,j);
-         custoInsercao[l].noInserido = k;
-         custoInsercao[l].arestaRemovida = a;
-         l++;
-
-      }
-
-   }
-
-   return custoInsercao;
-
-}
-
-void MLP::inserirNaSolucao(Path& s, MLP::insertionInfo& inserted, std::vector<int>& CL)
-{
-
-   s.permutation.insert(s.permutation.begin() + inserted.arestaRemovida + 1, inserted.noInserido);
-   std::erase(CL, inserted.noInserido);
+    std::sort(custo.begin(), custo.end(), [r, this](int a, int b)
+                 { return this->data->getDistance(r, a) < this->data->getDistance(r, b); });
 
 }

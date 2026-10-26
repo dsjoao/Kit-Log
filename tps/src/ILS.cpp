@@ -3,10 +3,10 @@
 Path TSP_ILS::solve(int maxIter, int maxIterIls)
 {
 
-   
+
    Path bestOfAll;
    bestOfAll.objVal = INFINITY;
-    for (int i = 0; i < maxIter; i++) 
+    for (int i = 0; i < maxIter; i++)
    {
        Path s = Construcao();
        Path best = s;
@@ -14,28 +14,28 @@ Path TSP_ILS::solve(int maxIter, int maxIterIls)
        getObjVal(best); // calcula o custo do caminho
 
        int iterIls = 0;
-       while (iterIls <= maxIterIls) 
+       while (iterIls <= maxIterIls)
       {
           buscaLocal(&s);
 
           getObjVal(s);
 
-          if (s.objVal < best.objVal) 
+          if (s.objVal < best.objVal)
          {
              best = s;
              iterIls = 0;
-            
+
          }
           s = perturbacao(best);
 
-          getObjVal(best);
+          getObjVal(s);
 
           iterIls++;
-         
+
       }
-       if (best.objVal < bestOfAll.objVal) 
+       if (best.objVal < bestOfAll.objVal)
         bestOfAll = best;
-      
+
    }
     return bestOfAll;
 }

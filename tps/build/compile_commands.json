@@ -1,0 +1,38 @@
+[
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/tps/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/tps/header -std=gnu++20 -o CMakeFiles/tsp_run.dir/src/ILS.cpp.o -c /home/dsjoao/Projects/Kit-Log/tps/src/ILS.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/tps/src/ILS.cpp",
+  "output": "CMakeFiles/tsp_run.dir/src/ILS.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/tps/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/tps/header -std=gnu++20 -o CMakeFiles/tsp_run.dir/src/Data.cpp.o -c /home/dsjoao/Projects/Kit-Log/tps/src/Data.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/tps/src/Data.cpp",
+  "output": "CMakeFiles/tsp_run.dir/src/Data.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/tps/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/tps/header -std=gnu++20 -o CMakeFiles/tsp_run.dir/src/ILS_Utils_bestImprovement.cpp.o -c /home/dsjoao/Projects/Kit-Log/tps/src/ILS_Utils_bestImprovement.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/tps/src/ILS_Utils_bestImprovement.cpp",
+  "output": "CMakeFiles/tsp_run.dir/src/ILS_Utils_bestImprovement.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/tps/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/tps/header -std=gnu++20 -o CMakeFiles/tsp_run.dir/src/ILS_Utils_construcao.cpp.o -c /home/dsjoao/Projects/Kit-Log/tps/src/ILS_Utils_construcao.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/tps/src/ILS_Utils_construcao.cpp",
+  "output": "CMakeFiles/tsp_run.dir/src/ILS_Utils_construcao.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/tps/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/tps/header -std=gnu++20 -o CMakeFiles/tsp_run.dir/src/ILS_Utils_perturbacao.cpp.o -c /home/dsjoao/Projects/Kit-Log/tps/src/ILS_Utils_perturbacao.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/tps/src/ILS_Utils_perturbacao.cpp",
+  "output": "CMakeFiles/tsp_run.dir/src/ILS_Utils_perturbacao.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/tps/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/tps/header -std=gnu++20 -o CMakeFiles/tsp_run.dir/src/main.cpp.o -c /home/dsjoao/Projects/Kit-Log/tps/src/main.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/tps/src/main.cpp",
+  "output": "CMakeFiles/tsp_run.dir/src/main.cpp.o"
+}
+]

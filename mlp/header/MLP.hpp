@@ -13,14 +13,46 @@ struct Path
 class MLP
 {
 
+struct Subseq
+{
+    double T,C;
+    int W;
+    int first, last;
+
+    inline static Subseq concatenate(Subseq &sigma1, Subseq &sigma2, Data *data)
+    {
+        Subseq sigma;
+
+        double temp = data->getDistance(sigma1.last, sigma2.first);
+        sigma.W = sigma1.W + sigma2.W;
+        sigma.T = sigma1.T + temp + sigma2.T;
+        sigma.C = sigma1.C + sigma2.W * (sigma1.T + temp) + sigma2.C;
+
+        sigma.first = sigma1.first;
+        sigma.last = sigma2.last;
+
+        return sigma;
+    }
+
+};
+
+
 public:
    MLP(Data *data)
    {
       this->data = data;
       this->c = this->data->getMatrixCost();
+      this->subseq_matrix =
+          std::vector<std::vector<Subseq>>
+          (this->data->getDimension() + 1,
+           std::vector<Subseq>(this->data->getDimension() + 1));
    }
 
    ~MLP() {}
+
+   Data *data;
+   double **c;
+   std::vector<std::vector<Subseq>> subseq_matrix;
 
    Path solve(int maxIter, int maxIterIls);
 
@@ -28,29 +60,17 @@ public:
 
    void show(Path &s);
 
-   Data *data;
-   double **c;
+   void updateAllSubseq(Path *s);
 
-   struct insertionInfo
-   {
-      int noInserido;
-      int arestaRemovida;
-      double custo;
-   };
+
 
       // ----------- construcao -----------
 
       Path Construcao();
 
-      std::vector<int> escolher3NosAleatorios();
-
       std::vector<int> NosRestantes(Path &s);
 
-      void ordenarEmOrdemCrescente(std::vector<insertionInfo> &custoInsercao);
-
-      std::vector<insertionInfo> calcularCustoInsercao(Path &s, std::vector<int>& CL);
-
-      void inserirNaSolucao(Path &s, insertionInfo &inserted, std::vector<int>& CL);
+      void ordenarEmOrdemCrescente(std::vector<int> &custo, int r);
 
       // -----------------------
 
