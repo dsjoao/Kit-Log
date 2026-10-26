@@ -1,18 +1,19 @@
 #include "Data.h"
 #include "MLP.hpp"
+#include <cmath>
 #include <vector>
 #include <algorithm>
 
 void MLP::buscaLocal(Path *s)
 {
-    
+
     std::vector<int> NL = {1, 2, 3, 4, 5};
     bool improved = false;
-   
-    while (NL.empty() == false) 
+
+    while (NL.empty() == false)
    {
        int n = rand() % NL.size();
-       switch (NL[n]) 
+       switch (NL[n])
       {
        case 1:
           improved = bestImprovementSwap(s);
@@ -29,90 +30,81 @@ void MLP::buscaLocal(Path *s)
        case 5:
           improved = bestImprovementOrOpt(s, 3); // Or-opt3
           break;
-         
+
       }
        if (improved)  NL = {1, 2, 3, 4, 5};
        else  NL.erase(NL.begin() + n);
-      
-   }
-   
-} 
 
-bool MLP::bestImprovementSwap(Path *s) 
+   }
+
+}
+
+bool MLP::bestImprovementSwap(Path *s)
 {
-    
-    double bestDelta = 0;
+
+    double bestDelta = s->lat;
     int best_i, best_j;
-    for (int i = 1; i < s->permutation.size() - 1; i++) 
+    for (int i = 1; i < s->permutation.size() - 1; i++)
    {
-       int vi = s->permutation[i];
-       int vi_next = s->permutation[i + 1];
-       int vi_prev = s->permutation[i - 1];
-       for (int j = i + 1; j < s->permutation.size() - 1; j++) 
-      {
-          int vj = s->permutation[j];
-          int vj_next = s->permutation[j + 1];
-          int vj_prev = s->permutation[j - 1];
+       Subseq sigma1 = subseq_matrix[0][i - 1];
 
-          double delta;
+       for (size_t j = i + 1; j < s->permutation.size(); j++)
+       {
+           Subseq sigma2 = subseq_matrix[j][j];
+           Subseq sigma3 = subseq_matrix[i + 1][j];
+           Subseq sigma4 = subseq_matrix[j][this->data->getDimension() - 1];
 
-          if (j == i + 1) // adjacentes sao um caso a parte pois a soma deles na forma padrão inflaria o delta para numeros negativos falsos
-          {
-              delta = data->getDistance(vi_prev, vj) + data->getDistance(vi, vj_next) - data->getDistance(vi_prev, vi) - data->getDistance(vj, vj_next);
-          }
-          else
-          {
-              delta = - data->getDistance(vi_prev, vi) - data->getDistance(vi, vi_next) + data->getDistance(vi_prev, vj) // distancias do ponto x pra x - 1 e x + 1 (na sequencia) comparadas antes de dps da troca
-                         + data->getDistance(vj, vi_next) - data->getDistance(vj_prev, vj) - data->getDistance(vj, vj_next) 
-                         + data->getDistance(vj_prev, vi) + data->getDistance(vi, vj_next);
-          }
-          if (delta < bestDelta)
-          {
-              bestDelta = delta;
-              best_i = i;
-              best_j = j;
-          }
-         
-      }
-      
+           Subseq sigma_t1 = Subseq::concatenate(sigma1, sigma2,data);
+           Subseq sigma_t2 = Subseq::concatenate(sigma_t1, sigma3,data);
+           Subseq sigma_t3 = Subseq::concatenate(sigma_t2, sigma4,data);
+
+           if (sigma_t3.C < bestDelta)
+           {
+               bestDelta = sigma_t3.C;
+               best_i = i;
+               best_j = j;
+           }
+
+       }
+
    }
-    if (bestDelta < 0) 
+    if (bestDelta < s->lat)
     {
        std::swap(s->permutation[best_i], s->permutation[best_j]);
 
        return true;
-      
+
     }
     return false;
-   
+
 }
 
 // compara o custo original com o bloco invertido, ou seja, começo novo e final novo pois o resto do bloco todo permanece o msm
 bool MLP::bestImprovement2Opt(Path *s)
 {
-    
-    double bestDelta = 0;
+
+    double bestDelta = s->lat;
     int best_i, best_j;
     for (int i = 1; i < s->permutation.size() - 2; i++)
     {
-        int vi = s->permutation[i];
-        int vi_prev = s->permutation[i - 1];
-        for (int j = i + 2; j < s->permutation.size() - 1; j++)
-        {
-            int vj = s->permutation[j];
-            int vj_next = s->permutation[j + 1];
-            double delta = - data->getDistance(vi, vi_prev) + data->getDistance(vj, vi_prev) // compara a distancia de x com y + 1 e y com x - 1, pois a mudança é somente neles.
-                           - data->getDistance(vj, vj_next) + data->getDistance(vi, vj_next);
+        Subseq sigma1 = subseq_matrix[0][i - 1];
 
-            if (delta < bestDelta)
+        for (size_t j = i + 1 ; j < s->permutation.size(); j++)
+        {
+            Subseq sigma2 = subseq_matrix[j][i];
+            Subseq sigma3 = Subseq::concatenate(sigma1, sigma2, this->data);
+            Subseq sigma_t = Subseq::concatenate(sigma3, subseq_matrix[j + 1][this->data->getDimension() - 1], this->data);
+
+            if (sigma_t.C < bestDelta)
             {
-                bestDelta = delta;
+                bestDelta = sigma_t.C;
                 best_i = i;
                 best_j = j;
             }
+
         }
     }
-    if (bestDelta < 0)
+    if (bestDelta < s->lat)
     {
 
         if(best_i >= best_j)
@@ -127,35 +119,23 @@ bool MLP::bestImprovement2Opt(Path *s)
     return false;
 }
 
-// compara os custos do caminho original do caminho com os pontos finais e iniciais do bloco 
+// compara os custos do caminho original do caminho com os pontos finais e iniciais do bloco
 bool MLP:: bestImprovementOrOpt(Path *s, int count)
 {
-    
-    double bestDelta = 0;
+
+    double bestDelta = s->lat;
     int best_i, best_j;
     count--; // corrigir off by one
 
-    for (int i = 1; i <= s->permutation.size() - count - 3; i++)
+    for (int i = 1; i <= s->permutation.size() - count - 1; i++)
     {
-        int vi_start = s->permutation[i];
-        int vi_end = s->permutation[i + count];
-        int vi_start_prev = s->permutation[i - 1];
-        int vi_end_next = s->permutation[i + count + 1];
+       Subseq sigma1 = subseq_matrix[0][i + count - 1];
 
-        for (int j = i + 1 + count; j < s->permutation.size() - count - 3; j++) // -2 pq o 1 no final n conta
-        {
-            int vj = s->permutation[j];
-            int vj_next = s->permutation[j + 1];
-            int vj_prev = s->permutation[j - 1];
-            double delta = -data->getDistance(vi_start, vi_start_prev) - data->getDistance(vi_end, vi_end_next) - data->getDistance(vj, vj_next) + data->getDistance(vi_start, vj) + data->getDistance(vi_end, vj_next) + data->getDistance(vi_start_prev, vi_end_next);
-            if (delta < bestDelta)
-            {
-                bestDelta = delta;
-                best_i = i;
-                best_j = j;
-            }
-        }
-        }
+       for (size_t j = i + 1; j < s->permutation.size(); j++)
+       {
+
+       }
+    }
         if (bestDelta < 0)
         {
                 // "gira" a sequencia ate o termo escolhio (do meio) seja o primeiro do range especificado (esquerda ate direita)
@@ -173,5 +153,5 @@ bool MLP:: bestImprovementOrOpt(Path *s, int count)
             return true;
         }
         return false;
-    
+
 }
