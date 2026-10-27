@@ -1,4 +1,3 @@
-#include <cstdio>
 #include <vector>
 #include "Data.h"
 #include "MLP.hpp"
