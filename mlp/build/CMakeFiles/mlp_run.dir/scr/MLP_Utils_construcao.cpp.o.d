@@ -1,7 +1,6 @@
 CMakeFiles/mlp_run.dir/scr/MLP_Utils_construcao.cpp.o: \
  /home/dsjoao/Projects/Kit-Log/mlp/scr/MLP_Utils_construcao.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/16/vector \
- /usr/include/c++/16/bits/requires_hosted.h \
+ /usr/include/stdc-predef.h /usr/include/c++/16/cstdio \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -9,7 +8,19 @@ CMakeFiles/mlp_run.dir/scr/MLP_Utils_construcao.cpp.o: \
  /usr/include/sys/cdefs.h /usr/include/bits/long-double.h \
  /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/cpu_defines.h \
- /usr/include/c++/16/pstl/pstl_config.h \
+ /usr/include/c++/16/pstl/pstl_config.h /usr/include/stdio.h \
+ /usr/include/bits/libc-header-start.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stddef.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdarg.h \
+ /usr/include/bits/types.h /usr/include/bits/typesizes.h \
+ /usr/include/bits/time64.h /usr/include/bits/types/__fpos_t.h \
+ /usr/include/bits/types/__mbstate_t.h \
+ /usr/include/bits/types/__fpos64_t.h /usr/include/bits/types/__FILE.h \
+ /usr/include/bits/types/FILE.h /usr/include/bits/types/struct_FILE.h \
+ /usr/include/bits/types/cookie_io_functions_t.h \
+ /usr/include/bits/stdio_lim.h /usr/include/bits/floatn.h \
+ /usr/include/bits/floatn-common.h /usr/include/c++/16/vector \
+ /usr/include/c++/16/bits/requires_hosted.h \
  /usr/include/c++/16/bits/stl_algobase.h \
  /usr/include/c++/16/bits/cpp_type_traits.h \
  /usr/include/c++/16/bits/version.h /usr/include/c++/16/type_traits \
@@ -54,7 +65,6 @@ CMakeFiles/mlp_run.dir/scr/MLP_Utils_construcao.cpp.o: \
  /usr/include/c++/16/bits/range_access.h \
  /usr/include/c++/16/bits/erase_if.h /usr/include/c++/16/bits/vector.tcc \
  /usr/include/c++/16/bits/memory_resource.h /usr/include/c++/16/cstddef \
- /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stddef.h \
  /usr/include/c++/16/bits/uses_allocator.h \
  /usr/include/c++/16/bits/uses_allocator_args.h /usr/include/c++/16/tuple \
  /usr/include/c++/16/bits/invoke.h /usr/include/c++/16/bits/ranges_util.h \
@@ -63,15 +73,10 @@ CMakeFiles/mlp_run.dir/scr/MLP_Utils_construcao.cpp.o: \
  /usr/include/c++/16/bits/ostream.h /usr/include/c++/16/ios \
  /usr/include/c++/16/iosfwd /usr/include/c++/16/bits/stringfwd.h \
  /usr/include/c++/16/bits/postypes.h /usr/include/c++/16/cwchar \
- /usr/include/wchar.h /usr/include/bits/libc-header-start.h \
- /usr/include/bits/floatn.h /usr/include/bits/floatn-common.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdarg.h \
- /usr/include/bits/wchar.h /usr/include/bits/types/wint_t.h \
- /usr/include/bits/types/mbstate_t.h \
- /usr/include/bits/types/__mbstate_t.h /usr/include/bits/types/__FILE.h \
- /usr/include/bits/types/FILE.h /usr/include/bits/types/locale_t.h \
- /usr/include/bits/types/__locale_t.h /usr/include/c++/16/exception \
- /usr/include/c++/16/bits/exception_ptr.h \
+ /usr/include/wchar.h /usr/include/bits/wchar.h \
+ /usr/include/bits/types/wint_t.h /usr/include/bits/types/mbstate_t.h \
+ /usr/include/bits/types/locale_t.h /usr/include/bits/types/__locale_t.h \
+ /usr/include/c++/16/exception /usr/include/c++/16/bits/exception_ptr.h \
  /usr/include/c++/16/bits/cxxabi_init_exception.h \
  /usr/include/c++/16/typeinfo /usr/include/c++/16/bits/nested_exception.h \
  /usr/include/c++/16/bits/char_traits.h \
@@ -79,10 +84,9 @@ CMakeFiles/mlp_run.dir/scr/MLP_Utils_construcao.cpp.o: \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++locale.h \
  /usr/include/c++/16/clocale /usr/include/locale.h \
  /usr/include/bits/locale.h /usr/include/c++/16/cctype \
- /usr/include/ctype.h /usr/include/bits/types.h \
- /usr/include/bits/typesizes.h /usr/include/bits/time64.h \
- /usr/include/bits/endian.h /usr/include/bits/endianness.h \
- /usr/include/c++/16/bits/ios_base.h /usr/include/c++/16/ext/atomicity.h \
+ /usr/include/ctype.h /usr/include/bits/endian.h \
+ /usr/include/bits/endianness.h /usr/include/c++/16/bits/ios_base.h \
+ /usr/include/c++/16/ext/atomicity.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/gthr.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/gthr-default.h \
  /usr/include/pthread.h /usr/include/sched.h \
@@ -123,15 +127,11 @@ CMakeFiles/mlp_run.dir/scr/MLP_Utils_construcao.cpp.o: \
  /usr/include/sys/select.h /usr/include/bits/select.h \
  /usr/include/bits/types/sigset_t.h /usr/include/alloca.h \
  /usr/include/bits/stdlib-float.h /usr/include/c++/16/bits/std_abs.h \
- /usr/include/c++/16/cstdio /usr/include/stdio.h \
- /usr/include/bits/types/__fpos_t.h /usr/include/bits/types/__fpos64_t.h \
- /usr/include/bits/types/struct_FILE.h \
- /usr/include/bits/types/cookie_io_functions_t.h \
- /usr/include/bits/stdio_lim.h /usr/include/c++/16/cerrno \
- /usr/include/errno.h /usr/include/bits/errno.h \
- /usr/include/linux/errno.h /usr/include/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /usr/include/bits/types/error_t.h /usr/include/c++/16/bits/charconv.h \
+ /usr/include/c++/16/cerrno /usr/include/errno.h \
+ /usr/include/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/asm/errno.h /usr/include/asm-generic/errno.h \
+ /usr/include/asm-generic/errno-base.h /usr/include/bits/types/error_t.h \
+ /usr/include/c++/16/bits/charconv.h \
  /usr/include/c++/16/bits/basic_string.tcc \
  /usr/include/c++/16/bits/locale_classes.tcc \
  /usr/include/c++/16/system_error \

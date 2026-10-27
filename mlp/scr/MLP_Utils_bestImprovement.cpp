@@ -51,7 +51,8 @@ bool MLP::bestImprovementSwap(Path *s)
        for (size_t j = i + 1; j < s->permutation.size() - 1; j++)
        {
 
-           Subseq sigma1,sigma2,sigma3;
+           Subseq sigma1,sigma2,sigma3, sigma4;
+           Subseq sigmat;
 
 
            if (j == i + 1)
@@ -59,18 +60,21 @@ bool MLP::bestImprovementSwap(Path *s)
             sigma1 = Subseq::concatenate(subseq_matrix[0][i - 1], subseq_matrix[j][j], data);
             sigma2 = Subseq::concatenate(sigma1, subseq_matrix[i][i], data);
             sigma3 = Subseq::concatenate(sigma2, subseq_matrix[j + 1][s->permutation.size() - 1], data);
+            sigmat = sigma3;
            }
            else
            {
-            sigma1 = Subseq::concatenate(subseq_matrix[0][i - 1],subseq_matrix[i][i], data);
+            sigma1 = Subseq::concatenate(subseq_matrix[0][i - 1],subseq_matrix[j][j], data);
             sigma2 = Subseq::concatenate(sigma1, subseq_matrix[i + 1][j - 1], data);
-            sigma3 = Subseq::concatenate(sigma2, subseq_matrix[j + 1][s->permutation.size() - 1],data);
+            sigma3 = Subseq::concatenate(sigma2, subseq_matrix[i][i],data);
+            sigma4 = Subseq::concatenate(sigma3, subseq_matrix[j + 1][s->permutation.size() - 1], data);
+            sigmat = sigma4;
            }
 
 
-           if (sigma3.C < bestDelta)
+           if (sigmat.C < bestDelta)
            {
-               bestDelta = sigma3.C;
+               bestDelta = sigmat.C;
                best_i = i;
                best_j = j;
            }
@@ -84,6 +88,8 @@ bool MLP::bestImprovementSwap(Path *s)
 
 
        updateAllSubseq(s);
+
+       getLat(*s);
 
        return true;
 
@@ -130,6 +136,8 @@ bool MLP::bestImprovement2Opt(Path *s)
 
         updateAllSubseq(s);
 
+        getLat(*s);
+
         return true;
     }
     return false;
@@ -138,11 +146,6 @@ bool MLP::bestImprovement2Opt(Path *s)
 // compara os custos do caminho original do caminho com os pontos finais e iniciais do bloco
 bool MLP:: bestImprovementOrOpt(Path *s, int count)
 {
-
-
-
-
-
     double bestDelta = s->lat;
     int best_i, best_j;
     count--; // corrigir off by one
@@ -177,8 +180,9 @@ bool MLP:: bestImprovementOrOpt(Path *s, int count)
                 std::rotate(s->permutation.begin() + best_j, s->permutation.begin() + best_i, s->permutation.begin() + best_i + count + 1);
             }
 
-
             updateAllSubseq(s);
+
+            getLat(*s);
 
             return true;
         }

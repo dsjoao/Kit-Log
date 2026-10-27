@@ -7,7 +7,6 @@ Path MLP::solve(int maxIter, int maxIterIls)
    bestOfAll.lat = INFINITY;
     for (int i = 0; i < maxIter; i++)
    {
-        printf("%d\n", i);
        Path s = Construcao();
        Path best = s;
 
@@ -18,7 +17,9 @@ Path MLP::solve(int maxIter, int maxIterIls)
        int iterIls = 0;
        while (iterIls <= maxIterIls)
       {
-           printf("%d   %d\n", i, iterIls);
+
+          getLat(s);
+
           buscaLocal(&s);
 
           getLat(s);

@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/dsjoao/Projects/Kit-Log/mlp/header
 
-CXX_FLAGS = -g -O0 -std=gnu++20
+CXX_FLAGS = -std=gnu++20
 

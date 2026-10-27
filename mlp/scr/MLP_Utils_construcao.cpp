@@ -1,3 +1,4 @@
+#include <cstdio>
 #include <vector>
 #include "Data.h"
 #include "MLP.hpp"
@@ -22,9 +23,9 @@ Path MLP::Construcao()
 
       ordenarEmOrdemCrescente(CL, r);
 
-
-      double alfa = ((rand() % this->data->getDimension()) / 100);
-      int selecionado =  CL[rand() % (std::max(1, (int)std::ceil(alfa * CL.size())))];
+      double alfa = (double)(rand() % (25 - 1 + 1) + 1) / 100;
+      if(CL.size() >= 100) alfa /= 10;
+      int selecionado =  CL[rand() % (std::max(0, (int)std::ceil(alfa * CL.size())))];
 
       s.permutation.push_back(selecionado);
 
