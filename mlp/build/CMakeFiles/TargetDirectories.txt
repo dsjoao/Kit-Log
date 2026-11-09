@@ -1,3 +1,0 @@
-/home/dsjoao/Projects/Kit-Log/mlp/build/CMakeFiles/mlp_run.dir
-/home/dsjoao/Projects/Kit-Log/mlp/build/CMakeFiles/edit_cache.dir
-/home/dsjoao/Projects/Kit-Log/mlp/build/CMakeFiles/rebuild_cache.dir
