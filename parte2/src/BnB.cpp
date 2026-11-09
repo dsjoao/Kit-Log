@@ -26,7 +26,8 @@ void BnB::node::updateNode(BnB &BnB)
 
 }
 
-int BnB::solve(int mode, std::list<node> tree)
+int BnB::solve(std::list<node> &tree, int mode)
+)
 {
 	node root;
 	// node::updateNode();
@@ -113,5 +114,5 @@ int BnB::solve(int mode, std::priority_queue<node> tree)
 
 std::vector<std::vector<int>> BnB::getSubtours()
 {
-	// implement
+
 }
