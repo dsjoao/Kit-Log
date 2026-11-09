@@ -1,5 +1,7 @@
 #include "Data.hpp"
 #include "hungarian.hpp"
+#include "BnB.hpp"
+#include <string>
 
 int main(int argc,char *argv[])
 {
@@ -8,7 +10,7 @@ int main(int argc,char *argv[])
     hungarian_problem_t p;
 	int mode = HUNGARIAN_MODE_MINIMIZE_COST;
 
-
+	BnB solver(data, p, std::stoi(argv[2]));
 
 
 	return 0;

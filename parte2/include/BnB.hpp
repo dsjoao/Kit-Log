@@ -6,6 +6,7 @@
 #include <queue>
 #include <utility>
 #include <vector>
+#include <cassert>
 
 struct node
 	{
@@ -22,14 +23,21 @@ class BnB
 {
 
 	double **cost;
+	double **assig;
 	int dim;
+	int Bstrat = 0;
+	hungarian_problem_t *p = NULL;
+	Data *data = NULL;
 
 	public:
 
+	BnB(Data data_, hungarian_problem_t p_, int mode);
+
 	void updateNode(node *node);
 
-	int solve(int mode, std::list<node>);
-	int solve(int mode, std::priority_queue<node>);
+	int solve(int mode);
+	int solve(std::priority_queue<node> &tree);
+	int solve(std::list<node> &tree, int mode);
 
 	std::vector<std::vector<int>> getSubtours();
 	std::pair<int, int> getChosen();
