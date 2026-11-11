@@ -5,14 +5,20 @@
 #include <string>
 #include <vector>
 
-BnB::BnB(Data data_, hungarian_problem_t p_, int mode)
+
+
+BnB::BnB(Data data_, hungarian_problem_t &p_, int mode)
+
 	{
 	    this->data = &data_;
 		this->p = &p_;
 
 		assert((this->data != NULL && this->p != NULL) && "erro iniciando data");
 
-		data->read();
+
+
+		this->data->read();
+
 		this->dim = data->getDimension();
 
 
@@ -25,27 +31,32 @@ BnB::BnB(Data data_, hungarian_problem_t p_, int mode)
 			}
 
 
-		hungarian_init(&(*p), this->cost, this->dim, this->dim,mode);
 
+		hungarian_init(p, this->cost, this->dim, this->dim, mode);
+
+		hungarian_solve(this->p);
 
 		this->assig = new double*[dim];
 			for (int i = 0; i < dim; i++){
-				cost[i] = new double[dim];
+				assig[i] = new double[dim];
 				for (int j = 0; j < dim; j++){
-					cost[i][j] = p->assignment[i][j];
+					assig[i][j] = p->assignment[i][j];
 				}
 			}
+
+			// TSP_ILS temp(&data_);
+
 
 
 	}
 
+/*
 
 void BnB::updateNode(node *node)
 {
 
 	hungarian_problem_t p;
 
-	 ;
 
     // BnB.dim = ;
 
@@ -164,7 +175,23 @@ int BnB::solve(std::priority_queue<node> &tree)
 
 }
 
+
+*/
 std::vector<std::vector<int>> BnB::getSubtours()
 {
-    return std::vector<std::vector<int>>(1);
-}
+
+	std::vector<std::vector<int>> subt;
+
+	for (int i = 0; i < this->dim; i++)
+		for (int j = i; j < this->dim; j++)
+		{
+			if(i == j) continue;
+
+			if(this->assig[i][j] == 1 && this->assig[j][i] == 1)
+			{
+				std::vector<int> temp = {};
+				for (int k = i; k < std::abs(j - i); k++)
+				    temp.push_back(i + 1);
+				temp.push_back(i);
+				subt.push_back(temp);
+			}
