@@ -1,0 +1,56 @@
+[
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/include -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -o CMakeFiles/BnB_run.dir/src/main.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/main.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/src/main.cpp",
+  "output": "CMakeFiles/BnB_run.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/include -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -o CMakeFiles/BnB_run.dir/src/Data.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/Data.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/src/Data.cpp",
+  "output": "CMakeFiles/BnB_run.dir/src/Data.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/include -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -o CMakeFiles/BnB_run.dir/src/hungarian.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/hungarian.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/src/hungarian.cpp",
+  "output": "CMakeFiles/BnB_run.dir/src/hungarian.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/heuristic",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -o CMakeFiles/tsp_lib.dir/src/ILS.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/src/ILS.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/src/ILS.cpp",
+  "output": "heuristic/CMakeFiles/tsp_lib.dir/src/ILS.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/heuristic",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -o CMakeFiles/tsp_lib.dir/src/Data.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/src/Data.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/src/Data.cpp",
+  "output": "heuristic/CMakeFiles/tsp_lib.dir/src/Data.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/heuristic",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -o CMakeFiles/tsp_lib.dir/src/ILS_Utils_bestImprovement.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/src/ILS_Utils_bestImprovement.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/src/ILS_Utils_bestImprovement.cpp",
+  "output": "heuristic/CMakeFiles/tsp_lib.dir/src/ILS_Utils_bestImprovement.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/heuristic",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -o CMakeFiles/tsp_lib.dir/src/ILS_Utils_construcao.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/src/ILS_Utils_construcao.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/src/ILS_Utils_construcao.cpp",
+  "output": "heuristic/CMakeFiles/tsp_lib.dir/src/ILS_Utils_construcao.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/heuristic",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -o CMakeFiles/tsp_lib.dir/src/ILS_Utils_perturbacao.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/src/ILS_Utils_perturbacao.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/src/ILS_Utils_perturbacao.cpp",
+  "output": "heuristic/CMakeFiles/tsp_lib.dir/src/ILS_Utils_perturbacao.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/heuristic",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -o CMakeFiles/tsp_lib.dir/src/main.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/src/main.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/src/main.cpp",
+  "output": "heuristic/CMakeFiles/tsp_lib.dir/src/main.cpp.o"
+}
+]
