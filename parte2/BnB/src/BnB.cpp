@@ -1,5 +1,6 @@
 #include "BnB.hpp"
 #include "hungarian.hpp"
+#include <set>
 #include <list>
 #include <queue>
 #include <string>
@@ -8,47 +9,37 @@
 
 
 BnB::BnB(Data data_, hungarian_problem_t &p_, int mode)
-
-	{
+{
 	    this->data = &data_;
 		this->p = &p_;
 
 		assert((this->data != NULL && this->p != NULL) && "erro iniciando data");
 
-
-
 		this->data->read();
 
 		this->dim = data->getDimension();
 
-
-		this->cost = new double*[dim];
+		this->cost = new double*[(size_t)dim];
 			for (int i = 0; i < dim; i++){
-				cost[i] = new double[dim];
+				cost[i] = new double[(size_t)dim];
 				for (int j = 0; j < dim; j++){
 					cost[i][j] = data->getDistance(i+1,j+1);
 				}
 			}
 
-
-
 		hungarian_init(p, this->cost, this->dim, this->dim, mode);
 
 		hungarian_solve(this->p);
 
-		this->assig = new double*[dim];
-			for (int i = 0; i < dim; i++){
-				assig[i] = new double[dim];
-				for (int j = 0; j < dim; j++){
-					assig[i][j] = p->assignment[i][j];
+		this->assig = new int*[(size_t)dim + 1];
+			for (int i = 1; i < dim; i++){
+				assig[i] = new int[(size_t)dim + 1];
+				for (int j = 1; j < dim; j++){
+					assig[i][j] = p->assignment[i - 1][j - 1];
 				}
 			}
-
-			// TSP_ILS temp(&data_);
-
-
-
-	}
+			// TSP_ILS temp(&data_)
+}
 
 /*
 
@@ -180,18 +171,38 @@ int BnB::solve(std::priority_queue<node> &tree)
 std::vector<std::vector<int>> BnB::getSubtours()
 {
 
-	std::vector<std::vector<int>> subt;
+	std::vector<std::vector<int>> subtours;
+	std::vector<int> temp;
+	std::set<int> seen;
 
-	for (int i = 0; i < this->dim; i++)
-		for (int j = i; j < this->dim; j++)
+		int i = 1;
+		int idx = i;
+		for (int j = i; j < this->dim ; j++)
 		{
-			if(i == j) continue;
-
-			if(this->assig[i][j] == 1 && this->assig[j][i] == 1)
+			if(this->assig[i][j])
 			{
-				std::vector<int> temp = {};
-				for (int k = i; k < std::abs(j - i); k++)
-				    temp.push_back(i + 1);
+				if(!seen.contains(idx))
+				{
+					seen.insert(i);
+					idx = i;
+				}
+
 				temp.push_back(i);
-				subt.push_back(temp);
+				i = j;
+				j = 0;
+
+				if(temp.back() == temp.front() && temp.size() > 1)
+				{
+					subtours.push_back(temp);
+					temp.clear();
+					int aux = i;
+					i = idx + 1;
+					idx = aux + 1;
+
+				}
 			}
+		}
+
+//	std::erase_if(subtours, [](std::vector<int> x) { return x.empty(); });
+	return subtours;
+}

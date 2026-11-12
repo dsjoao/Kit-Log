@@ -1,21 +1,27 @@
 [
 {
   "directory": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/build",
-  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/include -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -o CMakeFiles/BnB_run.dir/src/main.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/main.cpp",
-  "file": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/src/main.cpp",
-  "output": "CMakeFiles/BnB_run.dir/src/main.cpp.o"
-},
-{
-  "directory": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/build",
-  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/include -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -o CMakeFiles/BnB_run.dir/src/Data.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/Data.cpp",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/include -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -g -O0 -Wall -Wextra -o CMakeFiles/BnB_run.dir/src/Data.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/Data.cpp",
   "file": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/src/Data.cpp",
   "output": "CMakeFiles/BnB_run.dir/src/Data.cpp.o"
 },
 {
   "directory": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/build",
-  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/include -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -o CMakeFiles/BnB_run.dir/src/hungarian.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/hungarian.cpp",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/include -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -g -O0 -Wall -Wextra -o CMakeFiles/BnB_run.dir/src/hungarian.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/hungarian.cpp",
   "file": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/src/hungarian.cpp",
   "output": "CMakeFiles/BnB_run.dir/src/hungarian.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/include -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -g -O0 -Wall -Wextra -o CMakeFiles/BnB_run.dir/src/test.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/test.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/src/test.cpp",
+  "output": "CMakeFiles/BnB_run.dir/src/test.cpp.o"
+},
+{
+  "directory": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/build",
+  "command": "/usr/bin/c++  -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/include -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header -std=gnu++20 -g -O0 -Wall -Wextra -o CMakeFiles/BnB_run.dir/src/BnB.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/BnB.cpp",
+  "file": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/src/BnB.cpp",
+  "output": "CMakeFiles/BnB_run.dir/src/BnB.cpp.o"
 },
 {
   "directory": "/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/heuristic",

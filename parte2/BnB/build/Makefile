@@ -142,6 +142,30 @@ tsp_lib/fast:
 	$(MAKE) $(MAKESILENT) -f heuristic/CMakeFiles/tsp_lib.dir/build.make heuristic/CMakeFiles/tsp_lib.dir/build
 .PHONY : tsp_lib/fast
 
+src/BnB.o: src/BnB.cpp.o
+.PHONY : src/BnB.o
+
+# target to build an object file
+src/BnB.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BnB_run.dir/build.make CMakeFiles/BnB_run.dir/src/BnB.cpp.o
+.PHONY : src/BnB.cpp.o
+
+src/BnB.i: src/BnB.cpp.i
+.PHONY : src/BnB.i
+
+# target to preprocess a source file
+src/BnB.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BnB_run.dir/build.make CMakeFiles/BnB_run.dir/src/BnB.cpp.i
+.PHONY : src/BnB.cpp.i
+
+src/BnB.s: src/BnB.cpp.s
+.PHONY : src/BnB.s
+
+# target to generate assembly for a file
+src/BnB.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BnB_run.dir/build.make CMakeFiles/BnB_run.dir/src/BnB.cpp.s
+.PHONY : src/BnB.cpp.s
+
 src/Data.o: src/Data.cpp.o
 .PHONY : src/Data.o
 
@@ -190,29 +214,29 @@ src/hungarian.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BnB_run.dir/build.make CMakeFiles/BnB_run.dir/src/hungarian.cpp.s
 .PHONY : src/hungarian.cpp.s
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+src/test.o: src/test.cpp.o
+.PHONY : src/test.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BnB_run.dir/build.make CMakeFiles/BnB_run.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+src/test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BnB_run.dir/build.make CMakeFiles/BnB_run.dir/src/test.cpp.o
+.PHONY : src/test.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+src/test.i: src/test.cpp.i
+.PHONY : src/test.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BnB_run.dir/build.make CMakeFiles/BnB_run.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+src/test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BnB_run.dir/build.make CMakeFiles/BnB_run.dir/src/test.cpp.i
+.PHONY : src/test.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+src/test.s: src/test.cpp.s
+.PHONY : src/test.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BnB_run.dir/build.make CMakeFiles/BnB_run.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+src/test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BnB_run.dir/build.make CMakeFiles/BnB_run.dir/src/test.cpp.s
+.PHONY : src/test.cpp.s
 
 # Help Target
 help:
@@ -224,15 +248,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... BnB_run"
 	@echo "... tsp_lib"
+	@echo "... src/BnB.o"
+	@echo "... src/BnB.i"
+	@echo "... src/BnB.s"
 	@echo "... src/Data.o"
 	@echo "... src/Data.i"
 	@echo "... src/Data.s"
 	@echo "... src/hungarian.o"
 	@echo "... src/hungarian.i"
 	@echo "... src/hungarian.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... src/test.o"
+	@echo "... src/test.i"
+	@echo "... src/test.s"
 .PHONY : help
 
 

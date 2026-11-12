@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/include -I/home/dsjoao/Projects/Kit-Log/parte2/BnB/heuristic/header
 
-CXX_FLAGS = -std=gnu++20
+CXX_FLAGS = -std=gnu++20 -g -O0 -Wall -Wextra
 

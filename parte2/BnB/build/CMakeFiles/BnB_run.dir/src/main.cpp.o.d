@@ -1,7 +1,8 @@
 CMakeFiles/BnB_run.dir/src/main.cpp.o: \
- /home/dsjoao/Projects/Kit-Log/parte2/src/main.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/16/iostream \
- /usr/include/c++/16/bits/requires_hosted.h \
+ /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/main.cpp \
+ /usr/include/stdc-predef.h \
+ /home/dsjoao/Projects/Kit-Log/parte2/BnB/include/Data.hpp \
+ /usr/include/c++/16/iostream /usr/include/c++/16/bits/requires_hosted.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -141,9 +142,8 @@ CMakeFiles/BnB_run.dir/src/main.cpp.o: \
  /usr/include/c++/16/bits/basic_ios.tcc \
  /usr/include/c++/16/bits/ostream_print.h \
  /usr/include/c++/16/bits/ostream.tcc /usr/include/c++/16/istream \
- /usr/include/c++/16/bits/istream.tcc \
- /home/dsjoao/Projects/Kit-Log/parte2/include/Data.hpp \
- /usr/include/c++/16/fstream /usr/include/c++/16/bits/codecvt.h \
+ /usr/include/c++/16/bits/istream.tcc /usr/include/c++/16/fstream \
+ /usr/include/c++/16/bits/codecvt.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/basic_file.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/16/bits/fstream.tcc /usr/include/c++/16/math.h \
@@ -185,4 +185,17 @@ CMakeFiles/BnB_run.dir/src/main.cpp.o: \
  /usr/include/c++/16/bits/ranges_algobase.h \
  /usr/include/c++/16/pstl/glue_memory_defs.h \
  /usr/include/c++/16/pstl/execution_defs.h \
- /home/dsjoao/Projects/Kit-Log/parte2/include/hungarian.hpp
+ /home/dsjoao/Projects/Kit-Log/parte2/BnB/include/hungarian.hpp \
+ /home/dsjoao/Projects/Kit-Log/parte2/BnB/include/BnB.hpp \
+ /home/dsjoao/Projects/Kit-Log/parte2/BnB/include/Data.hpp \
+ /home/dsjoao/Projects/Kit-Log/parte2/BnB/include/hungarian.hpp \
+ /usr/include/c++/16/list /usr/include/c++/16/bits/stl_list.h \
+ /usr/include/c++/16/bits/list.tcc /usr/include/c++/16/queue \
+ /usr/include/c++/16/deque /usr/include/c++/16/bits/stl_deque.h \
+ /usr/include/c++/16/bits/deque.tcc /usr/include/c++/16/vector \
+ /usr/include/c++/16/bits/stl_vector.h \
+ /usr/include/c++/16/bits/stl_bvector.h \
+ /usr/include/c++/16/bits/vector.tcc /usr/include/c++/16/bits/stl_heap.h \
+ /usr/include/c++/16/bits/stl_queue.h /usr/include/c++/16/utility \
+ /usr/include/c++/16/bits/stl_relops.h /usr/include/c++/16/bits/intcmp.h \
+ /usr/include/c++/16/cassert /usr/include/assert.h

@@ -8,9 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/dsjoao/Projects/Kit-Log/parte2/BnB/src/BnB.cpp" "CMakeFiles/BnB_run.dir/src/BnB.cpp.o" "gcc" "CMakeFiles/BnB_run.dir/src/BnB.cpp.o.d"
   "/home/dsjoao/Projects/Kit-Log/parte2/BnB/src/Data.cpp" "CMakeFiles/BnB_run.dir/src/Data.cpp.o" "gcc" "CMakeFiles/BnB_run.dir/src/Data.cpp.o.d"
   "/home/dsjoao/Projects/Kit-Log/parte2/BnB/src/hungarian.cpp" "CMakeFiles/BnB_run.dir/src/hungarian.cpp.o" "gcc" "CMakeFiles/BnB_run.dir/src/hungarian.cpp.o.d"
-  "/home/dsjoao/Projects/Kit-Log/parte2/BnB/src/main.cpp" "CMakeFiles/BnB_run.dir/src/main.cpp.o" "gcc" "CMakeFiles/BnB_run.dir/src/main.cpp.o.d"
+  "/home/dsjoao/Projects/Kit-Log/parte2/BnB/src/test.cpp" "CMakeFiles/BnB_run.dir/src/test.cpp.o" "gcc" "CMakeFiles/BnB_run.dir/src/test.cpp.o.d"
   "" "BnB_run" "gcc" "CMakeFiles/BnB_run.dir/link.d"
   )
 

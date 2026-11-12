@@ -2,10 +2,6 @@
 #include "BnB.hpp"
 #include "Data.hpp"
 
-void ops()
-{
-
-}
 
 
 int main(int argc,char *argv[])
@@ -23,6 +19,8 @@ for (const auto& s : sb) {
     for (int x : s) std::cout << x << ' ';
     std::cout << '\n';
 }
+
+
 
 	return 0;
 }

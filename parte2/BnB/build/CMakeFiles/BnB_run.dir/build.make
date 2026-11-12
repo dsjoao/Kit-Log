@@ -72,24 +72,10 @@ include CMakeFiles/BnB_run.dir/flags.make
 CMakeFiles/BnB_run.dir/codegen:
 .PHONY : CMakeFiles/BnB_run.dir/codegen
 
-CMakeFiles/BnB_run.dir/src/main.cpp.o: CMakeFiles/BnB_run.dir/flags.make
-CMakeFiles/BnB_run.dir/src/main.cpp.o: /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/main.cpp
-CMakeFiles/BnB_run.dir/src/main.cpp.o: CMakeFiles/BnB_run.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/BnB_run.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BnB_run.dir/src/main.cpp.o -MF CMakeFiles/BnB_run.dir/src/main.cpp.o.d -o CMakeFiles/BnB_run.dir/src/main.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/main.cpp
-
-CMakeFiles/BnB_run.dir/src/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BnB_run.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/main.cpp > CMakeFiles/BnB_run.dir/src/main.cpp.i
-
-CMakeFiles/BnB_run.dir/src/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BnB_run.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/main.cpp -o CMakeFiles/BnB_run.dir/src/main.cpp.s
-
 CMakeFiles/BnB_run.dir/src/Data.cpp.o: CMakeFiles/BnB_run.dir/flags.make
 CMakeFiles/BnB_run.dir/src/Data.cpp.o: /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/Data.cpp
 CMakeFiles/BnB_run.dir/src/Data.cpp.o: CMakeFiles/BnB_run.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/BnB_run.dir/src/Data.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/BnB_run.dir/src/Data.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BnB_run.dir/src/Data.cpp.o -MF CMakeFiles/BnB_run.dir/src/Data.cpp.o.d -o CMakeFiles/BnB_run.dir/src/Data.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/Data.cpp
 
 CMakeFiles/BnB_run.dir/src/Data.cpp.i: cmake_force
@@ -103,7 +89,7 @@ CMakeFiles/BnB_run.dir/src/Data.cpp.s: cmake_force
 CMakeFiles/BnB_run.dir/src/hungarian.cpp.o: CMakeFiles/BnB_run.dir/flags.make
 CMakeFiles/BnB_run.dir/src/hungarian.cpp.o: /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/hungarian.cpp
 CMakeFiles/BnB_run.dir/src/hungarian.cpp.o: CMakeFiles/BnB_run.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BnB_run.dir/src/hungarian.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/BnB_run.dir/src/hungarian.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BnB_run.dir/src/hungarian.cpp.o -MF CMakeFiles/BnB_run.dir/src/hungarian.cpp.o.d -o CMakeFiles/BnB_run.dir/src/hungarian.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/hungarian.cpp
 
 CMakeFiles/BnB_run.dir/src/hungarian.cpp.i: cmake_force
@@ -114,23 +100,53 @@ CMakeFiles/BnB_run.dir/src/hungarian.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BnB_run.dir/src/hungarian.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/hungarian.cpp -o CMakeFiles/BnB_run.dir/src/hungarian.cpp.s
 
+CMakeFiles/BnB_run.dir/src/test.cpp.o: CMakeFiles/BnB_run.dir/flags.make
+CMakeFiles/BnB_run.dir/src/test.cpp.o: /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/test.cpp
+CMakeFiles/BnB_run.dir/src/test.cpp.o: CMakeFiles/BnB_run.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/BnB_run.dir/src/test.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BnB_run.dir/src/test.cpp.o -MF CMakeFiles/BnB_run.dir/src/test.cpp.o.d -o CMakeFiles/BnB_run.dir/src/test.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/test.cpp
+
+CMakeFiles/BnB_run.dir/src/test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BnB_run.dir/src/test.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/test.cpp > CMakeFiles/BnB_run.dir/src/test.cpp.i
+
+CMakeFiles/BnB_run.dir/src/test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BnB_run.dir/src/test.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/test.cpp -o CMakeFiles/BnB_run.dir/src/test.cpp.s
+
+CMakeFiles/BnB_run.dir/src/BnB.cpp.o: CMakeFiles/BnB_run.dir/flags.make
+CMakeFiles/BnB_run.dir/src/BnB.cpp.o: /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/BnB.cpp
+CMakeFiles/BnB_run.dir/src/BnB.cpp.o: CMakeFiles/BnB_run.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/BnB_run.dir/src/BnB.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BnB_run.dir/src/BnB.cpp.o -MF CMakeFiles/BnB_run.dir/src/BnB.cpp.o.d -o CMakeFiles/BnB_run.dir/src/BnB.cpp.o -c /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/BnB.cpp
+
+CMakeFiles/BnB_run.dir/src/BnB.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BnB_run.dir/src/BnB.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/BnB.cpp > CMakeFiles/BnB_run.dir/src/BnB.cpp.i
+
+CMakeFiles/BnB_run.dir/src/BnB.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BnB_run.dir/src/BnB.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/BnB.cpp -o CMakeFiles/BnB_run.dir/src/BnB.cpp.s
+
 # Object files for target BnB_run
 BnB_run_OBJECTS = \
-"CMakeFiles/BnB_run.dir/src/main.cpp.o" \
 "CMakeFiles/BnB_run.dir/src/Data.cpp.o" \
-"CMakeFiles/BnB_run.dir/src/hungarian.cpp.o"
+"CMakeFiles/BnB_run.dir/src/hungarian.cpp.o" \
+"CMakeFiles/BnB_run.dir/src/test.cpp.o" \
+"CMakeFiles/BnB_run.dir/src/BnB.cpp.o"
 
 # External object files for target BnB_run
 BnB_run_EXTERNAL_OBJECTS =
 
-BnB_run: CMakeFiles/BnB_run.dir/src/main.cpp.o
 BnB_run: CMakeFiles/BnB_run.dir/src/Data.cpp.o
 BnB_run: CMakeFiles/BnB_run.dir/src/hungarian.cpp.o
+BnB_run: CMakeFiles/BnB_run.dir/src/test.cpp.o
+BnB_run: CMakeFiles/BnB_run.dir/src/BnB.cpp.o
 BnB_run: CMakeFiles/BnB_run.dir/build.make
 BnB_run: CMakeFiles/BnB_run.dir/compiler_depend.ts
 BnB_run: heuristic/libtsp_lib.a
 BnB_run: CMakeFiles/BnB_run.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable BnB_run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable BnB_run"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/BnB_run.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

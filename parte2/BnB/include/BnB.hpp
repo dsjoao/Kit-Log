@@ -22,26 +22,19 @@ struct node
 class BnB
 {
 
-<<<<<<< HEAD
-=======
+
     public:
 
->>>>>>> 4fd933d95749c6796ca4bf8c63af0aa44e8d984e
+
 	double **cost;
-	double **assig;
+	int **assig;
 	int dim;
 	int Bstrat = 0;
 	hungarian_problem_t *p = NULL;
 	Data *data = NULL;
 
-<<<<<<< HEAD
-	public:
-
-	BnB(Data data_, hungarian_problem_t p_, int mode);
-=======
-
 	BnB(Data data_, hungarian_problem_t &p_, int mode);
->>>>>>> 4fd933d95749c6796ca4bf8c63af0aa44e8d984e
+
 
 	void updateNode(node *node);
 
@@ -50,10 +43,10 @@ class BnB
 	int solve(std::list<node> &tree, int mode);
 
 	std::vector<std::vector<int>> getSubtours();
+	std::vector<int> formSubtour(int begin, int end);
+
 	std::pair<int, int> getChosen();
 	bool isFeasible();
-
-
 
 	node* BranchOut();
 

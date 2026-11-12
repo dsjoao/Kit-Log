@@ -1,7 +1,7 @@
 CMakeFiles/BnB_run.dir/src/Data.cpp.o: \
- /home/dsjoao/Projects/Kit-Log/parte2/src/Data.cpp \
+ /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/Data.cpp \
  /usr/include/stdc-predef.h \
- /home/dsjoao/Projects/Kit-Log/parte2/include/Data.hpp \
+ /home/dsjoao/Projects/Kit-Log/parte2/BnB/include/Data.hpp \
  /usr/include/c++/16/iostream /usr/include/c++/16/bits/requires_hosted.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/os_defines.h \

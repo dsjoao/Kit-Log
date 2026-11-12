@@ -1,5 +1,5 @@
 CMakeFiles/BnB_run.dir/src/hungarian.cpp.o: \
- /home/dsjoao/Projects/Kit-Log/parte2/src/hungarian.cpp \
+ /home/dsjoao/Projects/Kit-Log/parte2/BnB/src/hungarian.cpp \
  /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/bits/libc-header-start.h /usr/include/features.h \
  /usr/include/features-time64.h /usr/include/bits/wordsize.h \
@@ -38,4 +38,4 @@ CMakeFiles/BnB_run.dir/src/hungarian.cpp.o: \
  /usr/include/bits/atomic_wide_counter.h /usr/include/bits/struct_mutex.h \
  /usr/include/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/bits/stdlib-float.h /usr/include/c++/16/bits/std_abs.h \
- /home/dsjoao/Projects/Kit-Log/parte2/include/hungarian.hpp
+ /home/dsjoao/Projects/Kit-Log/parte2/BnB/include/hungarian.hpp

@@ -107,12 +107,12 @@ heuristic/clean: heuristic/CMakeFiles/tsp_lib.dir/clean
 CMakeFiles/BnB_run.dir/all: heuristic/CMakeFiles/tsp_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BnB_run.dir/build.make CMakeFiles/BnB_run.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BnB_run.dir/build.make CMakeFiles/BnB_run.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=1,2,3,4 "Built target BnB_run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target BnB_run"
 .PHONY : CMakeFiles/BnB_run.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/BnB_run.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles 12
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/BnB_run.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles 0
 .PHONY : CMakeFiles/BnB_run.dir/rule
@@ -124,7 +124,7 @@ BnB_run: CMakeFiles/BnB_run.dir/rule
 # codegen rule for target.
 CMakeFiles/BnB_run.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BnB_run.dir/build.make CMakeFiles/BnB_run.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=1,2,3,4 "Finished codegen for target BnB_run"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=1,2,3,4,5 "Finished codegen for target BnB_run"
 .PHONY : CMakeFiles/BnB_run.dir/codegen
 
 # clean rule for target.
@@ -139,7 +139,7 @@ CMakeFiles/BnB_run.dir/clean:
 heuristic/CMakeFiles/tsp_lib.dir/all:
 	$(MAKE) $(MAKESILENT) -f heuristic/CMakeFiles/tsp_lib.dir/build.make heuristic/CMakeFiles/tsp_lib.dir/depend
 	$(MAKE) $(MAKESILENT) -f heuristic/CMakeFiles/tsp_lib.dir/build.make heuristic/CMakeFiles/tsp_lib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=5,6,7,8,9,10,11 "Built target tsp_lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=6,7,8,9,10,11,12 "Built target tsp_lib"
 .PHONY : heuristic/CMakeFiles/tsp_lib.dir/all
 
 # Build rule for subdir invocation for target.
@@ -156,7 +156,7 @@ tsp_lib: heuristic/CMakeFiles/tsp_lib.dir/rule
 # codegen rule for target.
 heuristic/CMakeFiles/tsp_lib.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f heuristic/CMakeFiles/tsp_lib.dir/build.make heuristic/CMakeFiles/tsp_lib.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=5,6,7,8,9,10,11 "Finished codegen for target tsp_lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles --progress-num=6,7,8,9,10,11,12 "Finished codegen for target tsp_lib"
 .PHONY : heuristic/CMakeFiles/tsp_lib.dir/codegen
 
 # clean rule for target.

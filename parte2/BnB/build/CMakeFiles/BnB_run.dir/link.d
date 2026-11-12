@@ -2,9 +2,10 @@ BnB_run: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/../../../../lib/Scrt1.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o \
-  CMakeFiles/BnB_run.dir/src/main.cpp.o \
   CMakeFiles/BnB_run.dir/src/Data.cpp.o \
   CMakeFiles/BnB_run.dir/src/hungarian.cpp.o \
+  CMakeFiles/BnB_run.dir/src/test.cpp.o \
+  CMakeFiles/BnB_run.dir/src/BnB.cpp.o \
   heuristic/libtsp_lib.a \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/libstdc++.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/../../../../lib/libm.so \
@@ -44,11 +45,13 @@ BnB_run: \
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o:
 
-CMakeFiles/BnB_run.dir/src/main.cpp.o:
-
 CMakeFiles/BnB_run.dir/src/Data.cpp.o:
 
 CMakeFiles/BnB_run.dir/src/hungarian.cpp.o:
+
+CMakeFiles/BnB_run.dir/src/test.cpp.o:
+
+CMakeFiles/BnB_run.dir/src/BnB.cpp.o:
 
 heuristic/libtsp_lib.a:
 
