@@ -25,7 +25,7 @@ class BnB
     public:
 
 	double **cost;
-	double **assig;
+	int **assig;
 	int dim;
 	int Bstrat = 0;
 	hungarian_problem_t *p = NULL;
