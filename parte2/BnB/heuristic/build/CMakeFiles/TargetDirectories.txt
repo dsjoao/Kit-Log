@@ -1,3 +1,0 @@
-/home/dsjoao/Projects/Kit-Log/ parte1/tps/build/CMakeFiles/tsp_run.dir
-/home/dsjoao/Projects/Kit-Log/ parte1/tps/build/CMakeFiles/edit_cache.dir
-/home/dsjoao/Projects/Kit-Log/ parte1/tps/build/CMakeFiles/rebuild_cache.dir

@@ -1,8 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/cmake_install.cmake",
-		"/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/heuristic/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

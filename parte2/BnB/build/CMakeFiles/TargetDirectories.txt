@@ -1,6 +1,0 @@
-/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles/BnB_run.dir
-/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles/edit_cache.dir
-/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/CMakeFiles/rebuild_cache.dir
-/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/heuristic/CMakeFiles/tsp_lib.dir
-/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/heuristic/CMakeFiles/edit_cache.dir
-/home/dsjoao/Projects/Kit-Log/parte2/BnB/build/heuristic/CMakeFiles/rebuild_cache.dir
