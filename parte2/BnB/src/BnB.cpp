@@ -41,7 +41,7 @@ BnB::BnB(Data data_, hungarian_problem_t &p_, int mode)
 			// TSP_ILS temp(&data_)
 }
 
-/*
+
 
 void BnB::updateNode(node *node)
 {
@@ -167,7 +167,7 @@ int BnB::solve(std::priority_queue<node> &tree)
 }
 
 
-*/
+
 std::vector<std::vector<int>> BnB::getSubtours()
 {
 
@@ -175,10 +175,13 @@ std::vector<std::vector<int>> BnB::getSubtours()
 	std::vector<int> temp;
 	std::set<int> seen;
 
+		int x;
+
 		int i = 0;
 		int idx = i;
-		for (int j = i; seen.size() < this->dim ; j++)
+		for (int j = i; seen.size() <= this->dim ; j++)
 		{
+			if(j == this->dim || i == this->dim) break;
 			if(this->assig[i][j])
 			{
 				seen.insert(i);
@@ -190,8 +193,6 @@ std::vector<std::vector<int>> BnB::getSubtours()
 				if(temp.back() == temp.front() && temp.size() > 1)
 				{
 					subtours.push_back(temp);
-					for (int x : temp) std::cout << x << ' ';
-					std::cout << '\n';
 					temp.clear();
 					while(seen.contains(idx))
 					    idx++;
@@ -200,10 +201,5 @@ std::vector<std::vector<int>> BnB::getSubtours()
 				}
 			}
 		}
-
-
-
-
-
 	return subtours;
 }
