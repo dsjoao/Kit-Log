@@ -14,13 +14,11 @@ add_executable(BnB_run
 							src/hungarian.cpp
 							src/test.cpp
 							src/BnB.cpp
-							src/main.cpp)
+							)
 
 target_include_directories(BnB_run PRIVATE include)
 target_link_libraries(BnB_run PRIVATE tsp_lib)
 target_compile_options(BnB_run PRIVATE
 		-g
 		-O0
-    -Wall
-    -Wextra
 )

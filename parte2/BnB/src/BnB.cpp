@@ -19,9 +19,9 @@ BnB::BnB(Data data_, hungarian_problem_t &p_, int mode)
 
 		this->dim = data->getDimension();
 
-		this->cost = new double*[(size_t)dim];
+		this->cost = new double*[dim];
 			for (int i = 0; i < dim; i++){
-				cost[i] = new double[(size_t)dim];
+				cost[i] = new double[dim];
 				for (int j = 0; j < dim; j++){
 					cost[i][j] = data->getDistance(i+1,j+1);
 				}
@@ -31,11 +31,11 @@ BnB::BnB(Data data_, hungarian_problem_t &p_, int mode)
 
 		hungarian_solve(this->p);
 
-		this->assig = new int*[(size_t)dim + 1];
-			for (int i = 1; i < dim; i++){
-				assig[i] = new int[(size_t)dim + 1];
-				for (int j = 1; j < dim; j++){
-					assig[i][j] = p->assignment[i - 1][j - 1];
+		this->assig = new int*[dim];
+			for (int i = 0; i < dim; i++){
+				assig[i] = new int[dim];
+				for (int j = 0; j < dim; j++){
+					assig[i][j] = p->assignment[i][j];
 				}
 			}
 			// TSP_ILS temp(&data_)
@@ -175,34 +175,35 @@ std::vector<std::vector<int>> BnB::getSubtours()
 	std::vector<int> temp;
 	std::set<int> seen;
 
-		int i = 1;
+		int i = 0;
 		int idx = i;
-		for (int j = i; j < this->dim ; j++)
+		for (int j = i; seen.size() < this->dim ; j++)
 		{
 			if(this->assig[i][j])
 			{
-				if(!seen.contains(idx))
-				{
-					seen.insert(i);
-					idx = i;
-				}
+				seen.insert(i);
 
-				temp.push_back(i);
+				temp.push_back(i + 1);
 				i = j;
-				j = 0;
+				j = -1;
 
 				if(temp.back() == temp.front() && temp.size() > 1)
 				{
 					subtours.push_back(temp);
+					for (int x : temp) std::cout << x << ' ';
+					std::cout << '\n';
 					temp.clear();
-					int aux = i;
-					i = idx + 1;
-					idx = aux + 1;
+					while(seen.contains(idx))
+					    idx++;
+					i = idx;
 
 				}
 			}
 		}
 
-//	std::erase_if(subtours, [](std::vector<int> x) { return x.empty(); });
+
+
+
+
 	return subtours;
 }
