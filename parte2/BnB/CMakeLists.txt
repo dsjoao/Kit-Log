@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(BnB_run
 							src/Data.cpp
 							src/hungarian.cpp
-							src/test.cpp
+							src/main.cpp
 							src/BnB.cpp
 							)
 
