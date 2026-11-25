@@ -2,10 +2,9 @@
 #include "ILS.hpp"
 #include "hungarian.hpp"
 #include <cassert>
-#include <list>
 #include <queue>
 #include <set>
-#include <string>
+#include <stack>
 #include <vector>
 
 BnB::BnB(Data data_, hungarian_problem_t &p_, int mode) {
@@ -42,11 +41,19 @@ BnB::BnB(Data data_, hungarian_problem_t &p_, int mode) {
   this->heuristic = &temp;
 
   assert(this->heuristic != NULL && "heuristica nao inicializada");
+
+  this->Bstrat = mode;
+
 }
+
 
 void BnB::updateNode(node *node) {
 
   hungarian_problem_t p;
+
+  for (auto &var : node->excluded_arcs)
+      this->cost[var.first][var.second] = 99999999;
+
 
   int mode = HUNGARIAN_MODE_MINIMIZE_COST;
   hungarian_init(&p, this->cost, this->dim, this->dim, mode);
@@ -60,51 +67,106 @@ void BnB::updateNode(node *node) {
   hungarian_free(&p);
 }
 
-int BnB::solve(int mode) {
-  if (mode == 2) {
-    std::priority_queue<node> tree;
+int BnB::solve()
+{
+  if (this->Bstrat == 0)
+  {
+      std::priority_queue<node> tree;
+      return this->solve(tree);
+  }
+  else if(this->Bstrat == 1)
+  {
+      std::stack<node> tree;
     return this->solve(tree);
   }
-
-  std::list<node> tree;
-
-  return this->solve(tree, mode);
+  else
+  {
+      std::queue<node> tree;
+      return this->solve(tree);
+  }
 }
 
-int BnB::solve(std::list<node> &tree, int mode) {
+int BnB::solve(std::queue<node> &tree) {
   node root;
   updateNode(&root);
 
-  tree.push_back(root);
+  tree.push(root);
   double UP =
-      this->heuristic->solve(50, (this->dim >= 150) ? this->dim / 2 : this->dim)
+      this->heuristic->solve
+          (50,
+           (this->dim >= 150) ? this->dim / 2 : this->dim)
           .objVal;
 
   while (!tree.empty()) {
-    auto node = BranchOut();
+    auto node = tree.front();
+    tree.pop();
 
-    if (node->feasible) {
-      if (node->LB < UP)
-        UP = node->LB;
+
+    if (node.feasible)
+    {
+      if (node.LB < UP)
+        UP = node.LB;
       continue;
     }
 
-    for (size_t i = 0; i < node->subtours[node->choosen].size() - 1; i++) {
+    for (size_t i = 0; i < node.subtours[node.choosen].size() - 1; i++) {
       struct node n;
-      n.excluded_arcs = node->excluded_arcs;
+      n.excluded_arcs = node.excluded_arcs;
 
       std::pair<int, int> excluded_arcs = {
-          node->subtours[node->choosen][i],
-          node->subtours[node->choosen][i + 1]};
+          node.subtours[node.choosen][i],
+          node.subtours[node.choosen][i + 1]};
 
       n.excluded_arcs.push_back(excluded_arcs);
       updateNode(&n);
 
       if (n.LB <= UP)
-        tree.push_back(n);
+        tree.push(n);
     }
   }
 
+  return UP;
+}
+
+int BnB::solve(std::stack<node> &tree)
+{
+  node root;
+  updateNode(&root);
+
+  tree.push(root);
+  double UP =
+      this->heuristic->solve
+          (50,
+           (this->dim >= 150) ? this->dim / 2 : this->dim)
+          .objVal;
+
+  while (!tree.empty()) {
+    auto node = tree.top();
+    tree.pop();
+
+
+    if (node.feasible)
+    {
+      if (node.LB < UP)
+        UP = node.LB;
+      continue;
+    }
+
+    for (size_t i = 0; i < node.subtours[node.choosen].size() - 1; i++) {
+      struct node n;
+      n.excluded_arcs = node.excluded_arcs;
+
+      std::pair<int, int> excluded_arcs = {
+          node.subtours[node.choosen][i],
+          node.subtours[node.choosen][i + 1]};
+
+      n.excluded_arcs.push_back(excluded_arcs);
+      updateNode(&n);
+
+      if (n.LB <= UP)
+        tree.push(n);
+    }
+  }
   return UP;
 }
 
@@ -114,30 +176,34 @@ int BnB::solve(std::priority_queue<node> &tree) {
   updateNode(&root);
 
   tree.push(root);
-  double UP = std::stod("12,1");
+  double UP = this->heuristic->solve
+      (50,
+      (this->dim >= 150) ? this->dim / 2 : this->dim)
+      .objVal;
 
   while (!tree.empty()) {
-    auto node = BranchOut();
+    auto node = tree.top();
+    tree.pop();
 
-    if (node->feasible) {
-      if (node->LB < UP)
-        UP = node->LB;
+    if (node.feasible) {
+      if (node.LB < UP)
+        UP = node.LB;
       continue;
     }
 
-    for (size_t i = 0; i < node->subtours[node->choosen].size() - 1; i++) {
+    for (size_t i = 0; i < node.subtours[node.choosen].size() - 1; i++) {
       struct node n;
-      n.excluded_arcs = node->excluded_arcs;
+      n.excluded_arcs = node.excluded_arcs;
 
       std::pair<int, int> excluded_arcs = {
-          node->subtours[node->choosen][i],
-          node->subtours[node->choosen][i + 1]};
+          node.subtours[node.choosen][i],
+          node.subtours[node.choosen][i + 1]};
 
       n.excluded_arcs.push_back(excluded_arcs);
-      // node::updateNode()
+      updateNode(&n);
 
       if (n.LB <= UP)
-        ; //	tree.push_back(n);
+        tree.push(n);
     }
   }
 
@@ -189,4 +255,9 @@ std::vector<std::vector<int>> BnB::getSubtours() {
     }
   }
   return subtours;
+}
+
+bool node::operator>(const node &node) const
+{
+    return this->LB < node.LB;
 }

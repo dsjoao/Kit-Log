@@ -3,8 +3,8 @@
 #include "Data.hpp"
 #include "hungarian.hpp"
 #include "ILS.hpp"
-#include <list>
 #include <queue>
+#include <stack>
 #include <utility>
 #include <vector>
 #include <cassert>
@@ -18,7 +18,10 @@ struct node
 		int choosen;
 		bool feasible;
 
+		bool operator>(const node &node) const;
 	};
+
+
 
 class BnB
 {
@@ -37,9 +40,10 @@ class BnB
 
 	void updateNode(node *node);
 
-	int solve(int mode);
+	int solve();
 	int solve(std::priority_queue<node> &tree);
-	int solve(std::list<node> &tree, int mode);
+	int solve(std::stack<node> &tree);
+	int solve(std::queue<node> &tree);
 
 	std::vector<std::vector<int>> getSubtours();
 	int getChoosen(node *node);
