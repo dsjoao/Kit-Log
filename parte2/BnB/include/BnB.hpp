@@ -41,10 +41,8 @@ class BnB
 	int solve(std::list<node> &tree, int mode);
 
 	std::vector<std::vector<int>> getSubtours();
-	std::pair<int, int> getChosen();
-	bool isFeasible();
-
-
+	int getChoosen(node *node);
+	bool isFeasible(node *node);
 
 	node* BranchOut();
 

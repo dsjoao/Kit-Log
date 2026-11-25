@@ -48,17 +48,14 @@ void BnB::updateNode(node *node)
 
 	hungarian_problem_t p;
 
-
-    // BnB.dim = ;
-
 	int mode = HUNGARIAN_MODE_MINIMIZE_COST;
-	// hungarian_init(&p, cost, dim, dim, mode);
+	hungarian_init(&p, this->cost, this->dim, this->dim, mode);
 
-	// node->LB = hungarian_solve(&p);
+	node->LB = hungarian_solve(&p);
 
-	// node->subtours = subtours(p);
-	// node->choosen = getChoosen(p);
-	// node->feasible = isFeasible(p);
+	node->subtours = getSubtours();
+	node->choosen  = getChoosen(node);
+	node->feasible = isFeasible(node);
 
 	hungarian_free(&p);
 
@@ -166,6 +163,28 @@ int BnB::solve(std::priority_queue<node> &tree)
 
 }
 
+int BnB::getChoosen(node *node)
+{
+
+	int min_idx = 0, min_size = node->subtours[0].size();
+	for (int i = 1; i < node->subtours.size(); i++)
+	{
+		if(node->subtours[i].size() < min_size)
+		{
+			min_idx = i;
+			min_size = node->subtours[i].size();
+		}
+	}
+
+	return min_idx;
+
+}
+
+
+bool BnB::isFeasible(node *node)
+{
+	return node->subtours.size() == 1;
+}
 
 
 std::vector<std::vector<int>> BnB::getSubtours()
