@@ -1,10 +1,12 @@
 #include "BnB.hpp"
 #include "hungarian.hpp"
+#include <cassert>
 #include <set>
 #include <list>
 #include <queue>
 #include <string>
 #include <vector>
+#include "ILS.hpp"
 
 
 
@@ -38,7 +40,11 @@ BnB::BnB(Data data_, hungarian_problem_t &p_, int mode)
 					assig[i][j] = p->assignment[i][j];
 				}
 			}
-			// TSP_ILS temp(&data_)
+
+			TSP_ILS temp(&data_);
+			this->heuristic = &temp;
+
+			assert(this->heuristic != NULL && "heuristica nao inicializada");
 }
 
 
@@ -78,10 +84,13 @@ int BnB::solve(int mode)
 int BnB::solve(std::list<node> &tree, int mode)
 {
 	node root;
-	// node::updateNode();
+	updateNode(&root);
 
 	tree.push_back(root);
-	double UP = std::stod("12,1");
+	double UP = this->heuristic->solve
+		(50,
+		(this->dim >= 150) ? this->dim / 2 : this->dim)
+	    .objVal;
 
 
 	while (!tree.empty())
@@ -107,7 +116,7 @@ int BnB::solve(std::list<node> &tree, int mode)
 			 };
 
 			 n.excluded_arcs.push_back(excluded_arcs);
-			 // node::updateNode()
+			 updateNode(&n);
 
 			 if (n.LB <= UP)
 					tree.push_back(n);
@@ -123,7 +132,7 @@ int BnB::solve(std::list<node> &tree, int mode)
 int BnB::solve(std::priority_queue<node> &tree)
 {
 	node root;
-	// node::updateNode();
+	updateNode(&root);
 
 	tree.push(root);
 	double UP = std::stod("12,1");

@@ -2,6 +2,7 @@
 
 #include "Data.hpp"
 #include "hungarian.hpp"
+#include "ILS.hpp"
 #include <list>
 #include <queue>
 #include <utility>
@@ -30,7 +31,7 @@ class BnB
 	int Bstrat = 0;
 	hungarian_problem_t *p = NULL;
 	Data *data = NULL;
-
+	TSP_ILS *heuristic = NULL;
 
 	BnB(Data data_, hungarian_problem_t &p_, int mode);
 
