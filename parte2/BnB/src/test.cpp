@@ -13,7 +13,7 @@ int main(int argc,char *argv[])
 
 	int modeBnB = std::stoi(argv[2]);
 
-	BnB solver(data, p, modeHung, modeBnB, 9999999);
+	BnB solver(data, p, modeHung, modeBnB, std::stoi(argv[3]));
 
 	std::cout << solver.solve();
 
