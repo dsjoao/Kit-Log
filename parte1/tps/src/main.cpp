@@ -5,10 +5,10 @@
 // codigo pode ser bem refatorado em algumas partes
 
 int main(int argc, char** argv) {
-   
+
    Data data = Data(argc, argv[1]);
    data.read();
-      
+
    TSP_ILS ils(&data);
 
    srand(time(0)); // gera aleatoriedade
@@ -19,12 +19,11 @@ int main(int argc, char** argv) {
    int MaxIter = 50;
 
 
-   
    Path opt = ils.solve(MaxIter, MaxIterILS);
 
    std::cout << "Soulucao encontrada:\n";
    ils.show(opt);
-   
 
-   return 0;
+
+   return opt.objVal;
 }

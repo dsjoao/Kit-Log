@@ -2,14 +2,13 @@
 
 #include "Data.hpp"
 #include "hungarian.hpp"
-#include "ILS.hpp"
 #include <queue>
 #include <stack>
 #include <utility>
 #include <vector>
 #include <cassert>
 
-struct node
+struct Node
 	{
 		std::vector<std::pair<int, int>> excluded_arcs;
 		std::vector<std::vector<int>> subtours;
@@ -18,7 +17,7 @@ struct node
 		int choosen;
 		bool feasible;
 
-		bool operator>(const node &node) const;
+		bool operator<(const Node &node) const;
 	};
 
 
@@ -34,21 +33,21 @@ class BnB
 	int Bstrat = 0;
 	hungarian_problem_t *p = NULL;
 	Data *data = NULL;
-	TSP_ILS *heuristic = NULL;
+	int heuristic;
 
-	BnB(Data data_, hungarian_problem_t &p_, int modeHung, int modeBnB);
+	BnB(Data& data_, hungarian_problem_t &p_, int modeHung, int modeBnB, int heuristic);
 
-	void updateNode(node *node);
+	void updateNode(Node *node);
 
 	int solve();
-	int solve(std::priority_queue<node> &tree);
-	int solve(std::stack<node> &tree);
-	int solve(std::queue<node> &tree);
+	int solve(std::priority_queue<Node> &tree);
+	int solve(std::stack<Node> &tree);
+	int solve(std::queue<Node> &tree);
 
-	std::vector<std::vector<int>> getSubtours();
-	int getChoosen(node *node);
-	bool isFeasible(node *node);
+	std::vector<std::vector<int>> getSubtours(hungarian_problem_t *p);
+	int getChoosen(Node *node);
+	bool isFeasible(Node *node);
 
-	node* BranchOut();
+	Node* BranchOut();
 
 };

@@ -1,6 +1,7 @@
 #include "hungarian.hpp"
 #include "BnB.hpp"
 #include "Data.hpp"
+#include <string>
 
 
 int main(int argc,char *argv[])
@@ -12,10 +13,9 @@ int main(int argc,char *argv[])
 
 	int modeBnB = std::stoi(argv[2]);
 
-	BnB solver(data, p, modeHung, modeBnB);
+	BnB solver(data, p, modeHung, modeBnB, 9999999);
 
 	std::cout << solver.solve();
-
 
 	return 0;
 }
