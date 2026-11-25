@@ -2,28 +2,19 @@
 #include "BnB.hpp"
 #include "Data.hpp"
 
-void ops()
-{
-
-}
-
 
 int main(int argc,char *argv[])
 {
     Data data = Data(argc, argv[1]);
 
     hungarian_problem_t p;
-	int mode = HUNGARIAN_MODE_MINIMIZE_COST;
+	int modeHung = HUNGARIAN_MODE_MINIMIZE_COST;
 
-	BnB solver(data, p, mode);
+	int modeBnB = std::stoi(argv[2]);
 
+	BnB solver(data, p, modeHung, modeBnB);
 
-auto sb = solver.getSubtours();
-for (const auto& s : sb) {
-    for (int x : s) std::cout << x << ' ';
-    std::cout << '\n';
-}
-
+	std::cout << solver.solve();
 
 
 	return 0;

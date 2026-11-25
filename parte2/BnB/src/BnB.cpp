@@ -7,7 +7,7 @@
 #include <stack>
 #include <vector>
 
-BnB::BnB(Data data_, hungarian_problem_t &p_, int mode) {
+BnB::BnB(Data data_, hungarian_problem_t &p_, int modeHung, int modeBnB) {
   this->data = &data_;
   this->p = &p_;
 
@@ -25,7 +25,7 @@ BnB::BnB(Data data_, hungarian_problem_t &p_, int mode) {
     }
   }
 
-  hungarian_init(p, this->cost, this->dim, this->dim, mode);
+  hungarian_init(p, this->cost, this->dim, this->dim, modeHung);
 
   hungarian_solve(this->p);
 
@@ -42,7 +42,7 @@ BnB::BnB(Data data_, hungarian_problem_t &p_, int mode) {
 
   assert(this->heuristic != NULL && "heuristica nao inicializada");
 
-  this->Bstrat = mode;
+  this->Bstrat = modeBnB;
 
 }
 

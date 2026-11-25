@@ -36,7 +36,7 @@ class BnB
 	Data *data = NULL;
 	TSP_ILS *heuristic = NULL;
 
-	BnB(Data data_, hungarian_problem_t &p_, int mode);
+	BnB(Data data_, hungarian_problem_t &p_, int modeHung, int modeBnB);
 
 	void updateNode(node *node);
 
